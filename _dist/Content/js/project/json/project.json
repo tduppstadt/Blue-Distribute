@@ -1,0 +1,7 @@
+var oJson = oJson || {};
+oJson["project"] = {
+    "serviceURLStub"   : "http://stage.api.lbox.com/consec/services/",
+    "secureServiceURL" : "http://stage.api.lbox.com/consec_oauth/Services/",
+    "campaignID"       : "78409EC5-3BBB-4256-B2C1-A172017BF926",
+    "fbAppId"          : "282760198527158"		
+};
