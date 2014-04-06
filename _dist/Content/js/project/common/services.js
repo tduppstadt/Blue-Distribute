@@ -1,8 +1,8 @@
 define([
-  
+	"services/services_login"
 ], 
 
-function ()
+function (serviceLogin)
 {
 
 	// ---------------------------------------------------------------
@@ -11,12 +11,12 @@ function ()
 	//
 	// ---------------------------------------------------------------
 
-	var constructor = function ()
+	var Services = function()
 	{       
 		this.init();
 	};
 
-	var methods =
+	Services.prototype =
 	{    
 		// --------------------------------------------------------------
 		// METHODS
@@ -29,6 +29,9 @@ function ()
 			console.log(" * <services>");
 	
 			this.assignListeners();
+
+			// extend class
+			serviceLogin(this);
 		},
 
 		// ______________________________________________________________
@@ -45,8 +48,6 @@ function ()
 			*/
 		}
 
-		
-
 
 		// --------------------------------------------------------------
 		// HELPERS
@@ -60,11 +61,7 @@ function ()
 
 	};
 
-	var Class = constructor;
-	Class.prototype = methods;
-
-	var instance = new Class();
-	
-	return (instance);      
+	var oServices = new Services();	
+	return (oServices);      
    
 });

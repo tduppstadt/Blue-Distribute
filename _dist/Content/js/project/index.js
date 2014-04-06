@@ -1,8 +1,9 @@
 define([
-    "common/view"  
+    "common/view",
+    "forms/form_login"  
 ], 
 
-function (view)
+function (view, formLogin)
 {
 
     // ---------------------------------------------------------------
@@ -14,6 +15,9 @@ function (view)
     var constructor = function ()
     {
         this.oView = view;
+
+        this.oForm = formLogin;
+        
         this.init();
     };
 
@@ -80,7 +84,7 @@ function (view)
 
     };
 
-     var Class = constructor;
+    var Class = constructor;
     Class.prototype = methods;
    
     return (Class);     

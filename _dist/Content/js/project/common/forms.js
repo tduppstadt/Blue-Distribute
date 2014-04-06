@@ -131,70 +131,89 @@
 	}
 */
 define([
-  
+	"common/model",
+	"common/services",  
+	"validate"
 ], 
 
-function ()
+function (model, services) 
 {
-
 	// ---------------------------------------------------------------
 	//
-	// Forms
+	// FORMS
 	//
 	// ---------------------------------------------------------------
+	var constructor = function()
+	{
+		console.log(" * <forms>");
 
-	var constructor = function ()
-	{       
+		var self = this;
+
+		// core objects
+		this.oModel = model;  
+		this.oServices = services;
+
+		this.STR_ERROR_FIELDS       = "Please complete the fields highlighted above.";
+		this.STR_ERROR_SUBMISSION   = "There is an error in your submission data.";
+		this.STR_SUBMISSION_SUCCESS = "Form Saved.";
+
+		this.CSS_COLOR_ERROR  = "red";
+		this.CSS_COLOR_NORMAL = "#a09ba1";
+
+		this.CLASS_ERROR_BOX   = ".error-box";
+		this.CLASS_ERROR_MSG   = ".error-msg";
+		this.CLASS_ERROR_FIELD = ".error-field";
+		this.CLASS_LOADING     = ".loading";
+		this.CLASS_FORM_LABEL  = ".form-label"; 
+		this.CLASS_FORM_SUBMIT = ".form-submit-button";
+
 		this.init();
 	};
-
+	
 	var methods =
-	{    
-		// --------------------------------------------------------------
-		// METHODS
-		// --------------------------------------------------------------
-		
+	{
+
 		// ______________________________________________________________
 		//                                                           init
 		init: function()
-		{           
-			console.log(" * <forms>");
-	
+		{
 			this.assignListeners();
 		},
 
 		// ______________________________________________________________
 		//                                                assignListeners
 		assignListeners: function()
-		{          
-			var self = this;
-
-			/*
-			window.tEvent.addListener("FB_INIT", function(evt, data)
-			{
-				self.oFB = data;
+		{
+			// custom checkboxes          
+			$("body").on("click", ".checkbox", function(event) 
+			{            
+				if ($(this).val() === "checked")
+				{
+					$(this).val("");
+					$(this).siblings("input[type='checkbox']").prop('checked', false); 
+				}
+				else
+				{
+					$(this).val("checked");
+					$(this).siblings("input[type='checkbox']").prop('checked', true); 
+				}
+				$(this).attr("data-value", $(this).val());  
+				$(this).siblings(".form-label-checkbox").attr("data-value", $(this).val());
 			});
-			*/
 		},
-
-		// ______________________________________________________________
-		//                                         assignDynamicListeners
-		assignDynamicListeners: function()
-		{          
-			var self = this;
-		},
-
 
 		// --------------------------------------------------------------
 		// HELPERS
-		// --------------------------------------------------------------        
+		// --------------------------------------------------------------
 		
 		// ______________________________________________________________
 		//                                                   showErrorMsg
 		showErrorMsg: function (errorList, msg)
 		{
+			console.log(" * <forms.showErrorMsg> ", errorList); 
+			
 			var self = this;        
-			console.log(" * <forms.showErrorMsg> ", errorList);    
+			
 			var trackingErrorList = [];
 
 			for (var i = 0; i < errorList.length; i++)
@@ -215,19 +234,28 @@ function ()
 			}
 
 			var pErrorMsg = $(self.CLASS_ERROR_BOX);
-			pErrorMsg.css("visibility", "visible");
+			pErrorMsg.css("display", "block");
 			pErrorMsg.html(msg);
+
+			this.formReset();
 		},
 
 		// ______________________________________________________________
 		//                                                showSubmitError
 		showSubmitError: function (data)
 		{
-			var result = false;
-			if (data.error !== null)
+			var result = false;			
+
+			this.formReset();
+			
+			if (data.error !== null && data.error !== "")
 			{
 				result = true;
-				$(this.CLASS_ERROR_BOX).html(data.error).css("visibility", "visible");
+				$(this.CLASS_ERROR_BOX).html(data.error).css("display", "block");
+			}
+			else
+			{
+				$(this.CLASS_ERROR_BOX).html(this.STR_SUBMISSION_SUCCESS).css("display", "block");
 			}
 			return (result);
 		},
@@ -245,7 +273,7 @@ function ()
 			// clear error fields
 			$(this.CLASS_ERROR_MSG).css("display", "none");
 			$(this.CLASS_ERROR_FIELD).removeClass("error-field");
-			$(this.CLASS_ERROR_BOX).css("visibility", "hidden");
+			$(this.CLASS_ERROR_BOX).css("display", "none");
 		},
 
 
@@ -285,19 +313,18 @@ function ()
 			});
 			validator._validateForm();
 		}
-
+				
 		// --------------------------------------------------------------
 		// EVENTS
 		// --------------------------------------------------------------
-
-
+		
 	};
-
+	
 	var Class = constructor;
 	Class.prototype = methods;
 
 	var instance = new Class();
 	
-	return (instance);       
-   
+	return (instance);
+
 });

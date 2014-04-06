@@ -7,7 +7,7 @@
 
 /* PUT IN YOUR SLIDER ID AND SIZE TO MAKE LOAD BEAUTIFULLY
    ================================================== */
-/* line 14, src/scss/modules/orbit-1.2.3.scss */
+/* line 14, ../../scss/modules/orbit-1.2.3.scss */
 #pov-container {
   width: 806px;
   height: 281px;
@@ -15,7 +15,7 @@
   overflow: hidden;
 }
 
-/* line 19, src/scss/modules/orbit-1.2.3.scss */
+/* line 19, ../../scss/modules/orbit-1.2.3.scss */
 #pov-container > img,
 #pov-container > div,
 #pov-container > a {
@@ -24,14 +24,14 @@
 
 /* CONTAINER
    ================================================== */
-/* line 29, src/scss/modules/orbit-1.2.3.scss */
+/* line 29, ../../scss/modules/orbit-1.2.3.scss */
 div.orbit-wrapper {
   width: 1px;
   height: 1px;
   position: relative;
 }
 
-/* line 34, src/scss/modules/orbit-1.2.3.scss */
+/* line 34, ../../scss/modules/orbit-1.2.3.scss */
 div.orbit {
   width: 1px;
   height: 1px;
@@ -39,7 +39,7 @@ div.orbit {
   overflow: hidden;
 }
 
-/* line 40, src/scss/modules/orbit-1.2.3.scss */
+/* line 40, ../../scss/modules/orbit-1.2.3.scss */
 div.orbit > img {
   position: absolute;
   top: 0;
@@ -47,7 +47,7 @@ div.orbit > img {
   display: none;
 }
 
-/* line 46, src/scss/modules/orbit-1.2.3.scss */
+/* line 46, ../../scss/modules/orbit-1.2.3.scss */
 div.orbit > a {
   border: none;
   position: absolute;
@@ -57,7 +57,7 @@ div.orbit > a {
   display: none;
 }
 
-/* line 54, src/scss/modules/orbit-1.2.3.scss */
+/* line 54, ../../scss/modules/orbit-1.2.3.scss */
 .orbit > div {
   position: absolute;
   top: 0;
@@ -69,7 +69,7 @@ div.orbit > a {
 /* Note: If your slider only uses content or anchors, you're going to want to put the width and height declarations on the ".orbit>div" and "div.orbit>a" tags in addition to just the .orbit-wrapper */
 /* TIMER
    ================================================== */
-/* line 67, src/scss/modules/orbit-1.2.3.scss */
+/* line 67, ../../scss/modules/orbit-1.2.3.scss */
 div.timer {
   width: 40px;
   height: 40px;
@@ -82,7 +82,7 @@ div.timer {
   z-index: 1001;
 }
 
-/* line 78, src/scss/modules/orbit-1.2.3.scss */
+/* line 78, ../../scss/modules/orbit-1.2.3.scss */
 span.rotator {
   display: block;
   width: 40px;
@@ -94,7 +94,7 @@ span.rotator {
   z-index: 3;
 }
 
-/* line 88, src/scss/modules/orbit-1.2.3.scss */
+/* line 88, ../../scss/modules/orbit-1.2.3.scss */
 span.mask {
   display: block;
   width: 20px;
@@ -106,19 +106,19 @@ span.mask {
   overflow: hidden;
 }
 
-/* line 98, src/scss/modules/orbit-1.2.3.scss */
+/* line 98, ../../scss/modules/orbit-1.2.3.scss */
 span.rotator.move {
   left: 0;
 }
 
-/* line 101, src/scss/modules/orbit-1.2.3.scss */
+/* line 101, ../../scss/modules/orbit-1.2.3.scss */
 span.mask.move {
   width: 40px;
   left: 0;
   background: url("../../images/global/orbit/timer-black.png") repeat 0 0;
 }
 
-/* line 106, src/scss/modules/orbit-1.2.3.scss */
+/* line 106, ../../scss/modules/orbit-1.2.3.scss */
 span.pause {
   display: block;
   width: 40px;
@@ -131,12 +131,12 @@ span.pause {
   opacity: 0;
 }
 
-/* line 117, src/scss/modules/orbit-1.2.3.scss */
+/* line 117, ../../scss/modules/orbit-1.2.3.scss */
 span.pause.active {
   background: url("../../images/global/orbit/pause-black.png") no-repeat 0 -40px;
 }
 
-/* line 120, src/scss/modules/orbit-1.2.3.scss */
+/* line 120, ../../scss/modules/orbit-1.2.3.scss */
 div.timer:hover span.pause,
 span.pause.active {
   opacity: 1;
@@ -144,13 +144,13 @@ span.pause.active {
 
 /* CAPTIONS
    ================================================== */
-/* line 128, src/scss/modules/orbit-1.2.3.scss */
+/* line 128, ../../scss/modules/orbit-1.2.3.scss */
 .orbit-caption {
   display: none;
   font-family: "HelveticaNeue", "Helvetica-Neue", Helvetica, Arial, sans-serif;
 }
 
-/* line 132, src/scss/modules/orbit-1.2.3.scss */
+/* line 132, ../../scss/modules/orbit-1.2.3.scss */
 .orbit-wrapper .orbit-caption {
   background: #000;
   background: rgba(0, 0, 0, 0.6);
@@ -167,12 +167,12 @@ span.pause.active {
 
 /* DIRECTIONAL NAV
    ================================================== */
-/* line 149, src/scss/modules/orbit-1.2.3.scss */
+/* line 149, ../../scss/modules/orbit-1.2.3.scss */
 div.slider-nav {
   display: block;
 }
 
-/* line 152, src/scss/modules/orbit-1.2.3.scss */
+/* line 152, ../../scss/modules/orbit-1.2.3.scss */
 div.slider-nav span {
   width: 78px;
   height: 100px;
@@ -184,13 +184,13 @@ div.slider-nav span {
   cursor: pointer;
 }
 
-/* line 162, src/scss/modules/orbit-1.2.3.scss */
+/* line 162, ../../scss/modules/orbit-1.2.3.scss */
 div.slider-nav span.right {
   background: url("../../images/global/orbit/right-arrow.png");
   right: 0;
 }
 
-/* line 166, src/scss/modules/orbit-1.2.3.scss */
+/* line 166, ../../scss/modules/orbit-1.2.3.scss */
 div.slider-nav span.left {
   background: url("../../images/global/orbit/left-arrow.png");
   left: 0;
@@ -198,7 +198,7 @@ div.slider-nav span.left {
 
 /* BULLET NAV
    ================================================== */
-/* line 173, src/scss/modules/orbit-1.2.3.scss */
+/* line 173, ../../scss/modules/orbit-1.2.3.scss */
 .orbit-bullets {
   position: absolute;
   z-index: 1000;
@@ -209,7 +209,7 @@ div.slider-nav span.left {
   padding: 0;
 }
 
-/* line 182, src/scss/modules/orbit-1.2.3.scss */
+/* line 182, ../../scss/modules/orbit-1.2.3.scss */
 .orbit-bullets li {
   float: left;
   margin-left: 5px;
@@ -222,20 +222,20 @@ div.slider-nav span.left {
   overflow: hidden;
 }
 
-/* line 193, src/scss/modules/orbit-1.2.3.scss */
+/* line 193, ../../scss/modules/orbit-1.2.3.scss */
 .orbit-bullets li.active {
   color: #222;
   background-position: -8px 0;
 }
 
-/* line 197, src/scss/modules/orbit-1.2.3.scss */
+/* line 197, ../../scss/modules/orbit-1.2.3.scss */
 .orbit-bullets li.has-thumb {
   background: none;
   width: 100px;
   height: 75px;
 }
 
-/* line 202, src/scss/modules/orbit-1.2.3.scss */
+/* line 202, ../../scss/modules/orbit-1.2.3.scss */
 .orbit-bullets li.active.has-thumb {
   background-position: 0 0;
   border-top: 2px solid #000;

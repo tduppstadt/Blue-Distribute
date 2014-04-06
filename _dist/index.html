@@ -66,20 +66,23 @@
 
 
     <!-- js -->	
-	<script 
-		data-pageId   = "index"
-		data-json     = "Content/json/project.json" 		
-		data-main     = "Content/js/project/config" 		
-		src           = "Content/js/libs/require-jquery.js">
+	<script 			
+		data-page-structure = "single"
+		data-page-id        = "index"
+		data-json           = "Content/json/project.json" 		
+		data-main           = "Content/js/project/config" 		
+		src                 = "Content/js/libs/require.js">
 	</script>
 
 	<!-- 
-	//set data-pageId to the page name. The pageManager will decide with class to init.
+		data-page-structure [single, multi, hybrid]: This is handled in the router
+			'single' uses hash strings, 
+			'multi' uses the data-page-id to instantiate  page classes. 
+			'hybrid' uses both.
 
-	src= "Content/js/libs/require-jquery.js"
-	src= "Content/js/release/project.js"
+		src= "Content/js/libs/require.js"
+		src= "Content/js/release/project.js"
 	 -->	
-
 
 </body>
 </html>
