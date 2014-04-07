@@ -1,42 +1,51 @@
 define([
-    "common/view"  
-], 
+    "common/model",
+    "common/services"
+],
 
-function (view)
+function (model, services) 
 {
 
     // ---------------------------------------------------------------
     //
-    // PAGE
+    // GLOBAL VIEW
     //
     // ---------------------------------------------------------------
-
-    var constructor = function ()
+   
+    var constructor = function()
     {
-        this.oView = view;
-        this.init();
+        console.log(" * <view>");
+
+        var self = this;
+        
+        // core objects
+        this.oModel    = model;   
+        this.oServices = services;  
+
+        // router page model
+        this.pageModel = this.oView.oRouter.pageModel.section.index;
+
     };
 
     var methods =
-    {    
+    {
+
         // --------------------------------------------------------------
         // METHODS
         // --------------------------------------------------------------
-        
+
         // ______________________________________________________________
         //                                                           init
         init: function()
-        {           
-            console.log(" * <page>");
-            this.preloadImages();
-            this.assignListeners();
-            this.onPageLoad();
+        {   
+            this.assignListeners();    
+            this.preloadImages();   
         },
 
         // ______________________________________________________________
         //                                                  preloadImages
         preloadImages: function()
-        {          
+        {   
             // var str = this.oGlobalModel.PATH_RELATIVE + "Content/images/desktop/button-red_hover.png";
             // window.helpers.preloadImage(str);
         },
@@ -45,40 +54,44 @@ function (view)
         // ______________________________________________________________
         //                                                assignListeners
         assignListeners: function()
-        {          
-            var self = this;        
-        },
+        {
+            var self = this;    
 
-        // ______________________________________________________________
-        //                                         assignDynamicListeners
-        assignDynamicListeners: function()
-        {          
-            var self = this;
-        },
-
-        
-
+            // page load event
+            window.tEvent.addListener(this.pageModel.loadEvent, function(evt)
+            {
+                self.onPageLoad();
+            });  
+        }
 
         // --------------------------------------------------------------
         // HELPERS
-        // --------------------------------------------------------------
+        // --------------------------------------------------------------        
 
 
         // --------------------------------------------------------------
         // EVENTS
-        // --------------------------------------------------------------
+        // --------------------------------------------------------------      
+        
         // ______________________________________________________________
         //                                                     onPageLoad
         onPageLoad: function()
         {   
+            var self = this;
+           
+            // set page hash        
+            this.oView.oRouter.setHash(this.pageModel.hashString);
+       
             console.log(" * <index.onPageLoad>");
         }
+
 
     };
 
     var Class = constructor;
     Class.prototype = methods;
-   
-    return (Class);     
-   
+
+    var instance = new Class();
+    
+    return (instance);  
 });
