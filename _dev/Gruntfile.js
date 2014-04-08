@@ -3,7 +3,6 @@ module.exports = function(grunt)
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-linter');	
 	grunt.loadNpmTasks('grunt-dot-compiler');
-	grunt.loadNpmTasks('grunt-json');
 	grunt.loadNpmTasks('grunt-pngmin');
 	grunt.loadNpmTasks('grunt-glue-nu');
 	grunt.loadNpmTasks('grunt-rename');
