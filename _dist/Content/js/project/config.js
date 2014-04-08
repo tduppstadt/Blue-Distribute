@@ -36,6 +36,11 @@ require.config(
 		'bootstrap': 
 		{       
 			deps: ['jquery']           
+		},
+
+		'common/model':
+		{
+			deps: ['jquery'] 
 		}
 	},
 
