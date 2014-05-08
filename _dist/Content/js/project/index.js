@@ -78,7 +78,9 @@ function (view, formLogin)
 
     var Class = constructor;
     Class.prototype = methods;
-   
+    
+    var instance = new Class();
+    
     return (Class);     
    
 });

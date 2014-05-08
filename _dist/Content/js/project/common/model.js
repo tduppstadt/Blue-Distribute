@@ -17,6 +17,7 @@ function (helpers)
         window.tEvent.eventStr.EVENT_JSON_LOADED = "EVENT_JSON_LOADED";
 
         // page events
+        window.tEvent.eventStr.EVENT_NEW_PAGE = "EVENT_NEW_PAGE";
         window.tEvent.eventStr.EVENT_LOAD_INDEX = "EVENT_LOAD_INDEX";
         
 

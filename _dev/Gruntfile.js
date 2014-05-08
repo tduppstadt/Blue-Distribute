@@ -122,8 +122,7 @@ module.exports = function(grunt)
 			],
 
 			exclude:
-			[
-				'../' + distFolder + '/Content/js/project/json/json-compiled.js',
+			[			
 				'../' + distFolder + '/Content/js/project/templates/templates-compiled.js'
 			]
 		},
@@ -136,25 +135,6 @@ module.exports = function(grunt)
 			}
 		},
 
-		// ------------ JSON compiler
-		// https://npmjs.org/package/grunt-json
-		json: 
-		{
-			main: 
-			{
-		        options: 
-		        {
-		            namespace: 'oJson',
-		            includePath: false,
-		            processName: function(filename) 
-		            {
-		                return filename.toLowerCase();
-		            }
-		        },
-		        src: ['../' + distFolder + '/Content/json/**/*.json'],
-		        dest: '../' + distFolder + '/Content/js/project/json/json-compiled.js'
-		    }
-		},
 
 		// ------------ DOT compiler
 		// https://npmjs.org/package/grunt-dot-compiler

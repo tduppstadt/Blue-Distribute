@@ -1,135 +1,3 @@
-/* ######### SAMPLE FORM ##########*/
-/*
-	<form id="registration-contact" name="regContact" action="#" onsubmit="">
-
-		<div class="form-item">
-			<div id="label-email" class="form-label">Email address (this will be your username)*</div>
-			<input id="email" name="email" class="input-field email" type="email">
-			<span class="error-msg"></span> 
-		</div>
-
-		<div class="form-item">
-			<div id="label-firstName" class="form-label">First Name*</div>
-			<input id="firstName" name="firstName" class="input-field firstName" type="text">
-			<span class="error-msg"></span> 
-		</div>
-
-		<div class="form-item">
-			<div id="label-lastName" class="form-label">Last Name*</div>
-			<input id="lastName" name="lastName" class="input-field lastName" type="text">
-			<span class="error-msg"></span> 
-		</div>
-
-		<div class="form-item">
-			<div id="label-phone" class="form-label">Phone Number*</div>
-			<input id="phone" name="phone" class="input-field phone" type="text" maxlength="10">
-			<span class="error-msg"></span> 
-		</div>  
-
-		<div id="password-group">
-			<div class="form-item">   
-				<div id="label-password" class="form-label">Password* </div>        
-				<input id="password" name="password" class="input-field required-field" type="password">
-				<span class="error-msg"></span> 
-			</div>
-
-			<div class="form-item">   
-				<div id="label-passwordConfirm" class="form-label">Password Verify* </div>        
-				<input id="passwordConfirm" name="passwordConfirm" class="input-field required-field" type="password">
-				<span class="error-msg"></span> 
-			</div>
-		</div>   
-
-		<div class="form-item">
-			<input id="agreeTerms" name="agreeTerms" type="checkbox"> <div id="label-agreeTerms" class="form-label">I agree to the <a id="terms-link">Terms & Conditions</a></div>
-			<span class="error-msg"></span> 
-		</div>
-
-
-		<div class="error-box">
-			The messaging for error goes here.
-		</div>
-		
-		
-		<div id="button-get-started" class="button form-submit-button"><div class="button-copy">Get Started</div></div>
-		<div class="loading"></div>
-
-	</form>
-*/
-
-
-/* ######### SAMPLE FORM CODE ##########*/
-/*    
-	createUser: function (callback)
-	{  
-		var self = this;   
-
-		// hide error box
-		this.oForms.prepareFormSubmit();
-
-		var passwordConfirm = encodeURIComponent($("#passwordConfirm").val());
-		var agree           = $("#agreeTerms")[0].checked;
-		
-		// get values
-		var formData = $("#registration-contact").serializeArray();            
-		formData = window.helpers.deserializeArray(formData);
-		formData.password = encodeURIComponent(formData.password);
-
-		var validateList = 
-		[
-			{
-				name: 'email',
-				display: 'Email',
-				rules: 'required|valid_email'
-			},
-			{
-				name: 'firstName',
-				display: 'First Name',
-				rules: 'required|alpha_numeric'
-			},
-			{
-				name: 'lastName',
-				display: 'Last Name',
-				rules: 'required|alpha_numeric'
-			},
-			{
-				name: 'password',
-				display: 'Password',
-				rules: 'required'
-			},
-			{
-				name: 'passwordConfirm',
-				display: 'Password Verify',
-				rules: 'required|matches[password]'
-			},
-			{
-				name: 'phone',
-				display: 'Phone number',
-				rules: 'required|numeric|exact_length[10]'
-			},
-			{
-				name: 'agreeTerms',
-				display: 'Agree to Terms',
-				rules: 'required'
-			}
-		];
-
-		this.validateForm(
-		{   
-			formName     : "regContact", 
-			validateList : validateList, 
-			callback     : function()
-			{
-				// call service
-				self.oServices.createUser(formData, function(results)
-				{
-					self.showSubmitError(results);
-					callback(results);
-				});
-			}
-		});
-	}
-*/
 define([
 	"common/model",  
 	"common/services",  
@@ -149,7 +17,7 @@ function (model, services)
 
 		var self = this;
 
-		// core objects	
+		// core objects
 		this.oModel = model;
 		this.oServices = services;
 
@@ -208,21 +76,31 @@ function (model, services)
 		
 		// ______________________________________________________________
 		//                                                   showErrorMsg
-		showErrorMsg: function (errorList, msg)
+		showErrorMsg: function (errorList, msg, parent)
 		{
 			console.log(" * <forms.showErrorMsg> ", errorList); 
 			
 			var self = this;        
 			
+			// get parent
+			if (parent === undefined) 
+			{
+				parent = "";
+			}
+			else
+			{
+				parent = "[name='" + parent + "']";
+			}
+
 			var trackingErrorList = [];
 
 			for (var i = 0; i < errorList.length; i++)
 			{              
 				// input red outline
-				$("#" + errorList[i].id).addClass("error-field");
+				$("#" + errorList[i].id, parent).addClass("error-field");
 
 				//field error message
-				$("#" + errorList[i].id).siblings(".error-msg").html(errorList[i].message).css("display", "block");
+				$("#" + errorList[i].id, parent).siblings(".error-msg").html(errorList[i].message).css("display", "block");
 
 				//add to tracking list
 				trackingErrorList.push(errorList[i].name);                        
@@ -233,7 +111,7 @@ function (model, services)
 				msg = self.STR_ERROR_SUBMISSION;                
 			}
 
-			var pErrorMsg = $(self.CLASS_ERROR_BOX);
+			var pErrorMsg = $(self.CLASS_ERROR_BOX, parent);
 			pErrorMsg.css("display", "block");
 			pErrorMsg.html(msg);
 
@@ -242,20 +120,22 @@ function (model, services)
 
 		// ______________________________________________________________
 		//                                                showSubmitError
-		showSubmitError: function (data)
-		{
-			var result = false;			
+		showSubmitError: function (data, parent)
+		{           
+			var result = false;         
+
+			if (parent === undefined) parent = "";
 
 			this.formReset();
 			
 			if (data.error !== null && data.error !== "")
 			{
 				result = true;
-				$(this.CLASS_ERROR_BOX).html(data.error).css("display", "block");
+				$(this.CLASS_ERROR_BOX, parent).html(data.error).css("display", "block");
 			}
 			else
 			{
-				$(this.CLASS_ERROR_BOX).html(this.STR_SUBMISSION_SUCCESS).css("display", "block");
+				$(this.CLASS_ERROR_BOX, parent).html(this.STR_SUBMISSION_SUCCESS).css("display", "block");
 			}
 			return (result);
 		},
@@ -288,6 +168,22 @@ function (model, services)
 			$(this.CLASS_LOADING).css("display", "none");
 		},
 
+		// ______________________________________________________________
+		//                                                 setCustomRules
+		setCustomRules: function (validator)
+		{
+			// require at least one number in password
+			validator.registerCallback('check_password', function(value) 
+			{               
+				if (/\d+/.test(value)) 
+				{                   
+					return true;
+				}
+				return false;
+			});
+			validator.setMessage('check_password', 'Please choose a stronger password using at least 1 number.');
+			return(validator);
+		},
 
 		// ______________________________________________________________
 		//                                                   validateForm
@@ -304,13 +200,14 @@ function (model, services)
 				if (errors.length > 0) 
 				{       
 					// show error message
-					self.showErrorMsg(errors, errors[0].message);                 
+					self.showErrorMsg(errors, errors[0].message, arg.formName);                 
 				}       
 				else
 				{
 					arg.callback();
 				}        
 			});
+			this.setCustomRules(validator);
 			validator._validateForm();
 		}
 				

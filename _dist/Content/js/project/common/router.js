@@ -1,10 +1,13 @@
 /*
     INSTRUCTIONS:
+
     For Single Page apps:
     Use the pageModel to organize the hash and event strings.
+    NOTE: pre-instantiate your page classes
 
     For Multi Page apps:
     Use the loadActivePage method to instantiate the active page.
+    NOTE: Do not instantiate your page classes, the router will do this as needed 
 */
 
 define([
@@ -69,11 +72,11 @@ function (model, PageIndex)
             switch(structure)
             {
                 case this.PAGE_STRUCTURE_SINGLE:
-                    this.loadActivePage();  
+                    this.initHash();                     
                     break;
 
                 case this.PAGE_STRUCTURE_MULTI:
-                    this.initHash(); 
+                    this.loadActivePage();  
                     break;
 
                 case this.PAGE_STRUCTURE_HYBRID:
@@ -147,6 +150,8 @@ function (model, PageIndex)
             window.allowHash = true;
             window.onhashchange = function()
             {      
+                window.tEvent.fire(window.tEvent.eventStr.EVENT_NEW_PAGE);
+                
                 // check for allowing updates based on hash                
                 if (!window.allowHash) 
                 {

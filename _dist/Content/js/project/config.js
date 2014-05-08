@@ -41,6 +41,11 @@ require.config(
 		'common/model':
 		{
 			deps: ['jquery'] 
+		},
+
+		'common/services':
+		{
+			deps: ['jquery'] 
 		}
 	},
 

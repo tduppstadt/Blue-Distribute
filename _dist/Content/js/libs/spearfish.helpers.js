@@ -493,6 +493,21 @@ window.helpers =
     		output[a[i].name] = a[i].value;
     	}
     	return (output);
+    },
+
+    // ______________________________________________________________
+    //                                                removeFromArray
+    // remove value from array
+    removeFromArray: function(a, val)
+    {	
+		var idx = a.indexOf(val);
+
+		if (idx != -1) 
+		{
+			a.splice(idx, 1);
+		}
+
+		return a;
     }
 
 };
