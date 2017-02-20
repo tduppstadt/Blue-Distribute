@@ -202,7 +202,11 @@ module.exports = function(grunt)
 	// ------------ TASKS
 
 	// build JS and compile templates
-	grunt.registerTask('build', ['dot', 'linter', 'requirejs']); // , 'targethtml'
+	grunt.registerTask('build', ['dot', 'linter', 'requirejs', 'sass']); // , 'targethtml'
+
+	// build JS and compile templates
+	grunt.registerTask('buildJS', ['dot', 'linter', 'requirejs']); // , 'targethtml'
+
 
 	// compile templates
 	grunt.registerTask('buildTemplate', ['dot']);
@@ -218,5 +222,8 @@ module.exports = function(grunt)
 	
 	// watch scss
 	grunt.registerTask('watchScss', ['sass', 'watch']);
+
+	// cache busting
+	grunt.registerTask('cacheBust', ['targethtml']);
 
 };

@@ -4,25 +4,35 @@ echo " "
 echo "1.  Build Project"
 echo "    - Compile Templates"
 echo "    - Build JS"
+echo "    - Compile SCSS"
 echo ""
-echo "2.  Compile Templates"
-echo "    - from [devFolder]/src/templates"
+echo "2.  Compile Templates & JS"
+echo "    - from _dev/src/templates"
+echo "    - to window.oTemplates"
+echo "    - JS compiled to _dist/Content/js/release"
+echo ""
+echo "3.  Compile Templates"
+echo "    - from _dev/src/templates"
 echo "    - to window.oTemplates"
 echo ""
-echo "3.  Compress PNG Images"
+echo "4.  Cache Bust"
+echo "    - from _dev/src/index.html"
+echo "    - to _dist/index.html"
+echo ""
+echo "5.  Compress PNG Images"
 echo "    - from [devFolder]/src/images/compression"
 echo "    - to Content/images"
 echo ""
-echo "4.  Glue Sprites"
+echo "6.  Glue Sprites"
 echo "    - from [devFolder]/src/images/sprites"
 echo "    - image to Content/images/sprites"
 echo "    - SCSS to [devFolder]/src/scss/sprites"
 echo ""
-echo "5.  Compile SCSS"
+echo "7.  Compile SCSS"
 echo "    - from [devFolder]/src/scss"
 echo "    - to Content/css"
 echo ""
-echo "6.  Watch SCSS"
+echo "8.  Watch SCSS"
 echo "    - Listens and responds to updates from SCSS files."
 echo "    - [Ctrl + Break] will stop the service."
 echo ""
@@ -50,34 +60,48 @@ if [ $choice -eq 1 ]; then
 fi
 
 if [ $choice -eq 2 ]; then
+	grunt --pagename=project buildJS;
+	echo " "
+	echo "__ TEMPLATES and JS BUILD COMPILED __"
+	echo " "
+fi
+
+if [ $choice -eq 3 ]; then
 	grunt --pagename=project buildTemplate;
 	echo " "
 	echo "__ TEMPLATES COMPILED __"
 	echo " "
 fi
 
-if [ $choice -eq 3 ]; then
+if [ $choice -eq 4 ]; then
+	grunt --pagename=project cacheBust;
+	echo " "
+	echo "__ CACHE BUST COMPILED __"
+	echo " "
+fi
+
+if [ $choice -eq 5 ]; then
 	grunt --pagename=project compressImages;
 	echo " "
 	echo "__ IMAGE COMPRESSED __"
 	echo " "
 fi
 
-if [ $choice -eq 4 ]; then
+if [ $choice -eq 6 ]; then
 	grunt --pagename=project glueSprites;
 	echo " "
 	echo "__ GLUE SPRITES COMPLETE __"
 	echo " "
 fi
 
-if [ $choice -eq 5 ]; then
+if [ $choice -eq 7 ]; then
 	grunt --pagename=project compileScss;
 	echo " "
 	echo "__ SCSS COMPILED __"
 	echo " "
 fi
 
-if [ $choice -eq 6 ]; then
+if [ $choice -eq 8 ]; then
 	echo "Listening for SCSS changes ... "
 	grunt --pagename=project watchScss;	
 fi
