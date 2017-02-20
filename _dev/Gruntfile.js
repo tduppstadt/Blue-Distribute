@@ -82,7 +82,7 @@ module.exports = function(grunt)
 	        renameSpriteToScss: 
 	        {
 	            src: '../' + distFolder + '/Content/css/sprites/sprites.css',
-	            dest: 'src/scss/sprites/sprites.scss'
+	            dest: 'src/scss/sprites/_sprites.scss'
 	        }
 	    },
 
