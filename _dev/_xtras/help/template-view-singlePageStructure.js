@@ -1,3 +1,15 @@
+/*
+    Creating a new page. 
+
+    create new event string for the new page in common/model.js
+    create a js file to hold the page object (this page)
+    - Update the assignListeners() for this pages event
+    common/router.js update the initPageModel() with the hash to look for and the event to be called.
+    add page to config to load the page
+
+*/
+
+
 define([
     "common/model",
     "common/services"
@@ -8,7 +20,7 @@ function (model, services)
 
     // ---------------------------------------------------------------
     //
-    // GLOBAL VIEW
+    // PAGE INDEX
     //
     // ---------------------------------------------------------------
    
@@ -22,9 +34,7 @@ function (model, services)
         this.oModel    = model;   
         this.oServices = services;  
 
-        // router page model
-        this.pageModel = this.oView.oRouter.pageModel.section.index;
-
+        this.init();
     };
 
     var methods =
@@ -38,6 +48,8 @@ function (model, services)
         //                                                           init
         init: function()
         {   
+            console.log(" * <index>");
+
             this.assignListeners();   
            
         },
@@ -49,9 +61,15 @@ function (model, services)
             var self = this;    
 
             // page load event
-            window.tEvent.addListener(this.pageModel.loadEvent, function(evt)
+            window.tEvent.addListener(window.tEvent.eventStr.EVENT_LOAD_INDEX, function(evt, data)
             {
-                self.onPageLoad();
+                self.onPageLoad(data);   
+            }); 
+
+            window.tEvent.addListener(window.tEvent.eventStr.EVENT_NEW_PAGE, function(evt, data)
+            {
+                // clean up for new page
+                self.onCleanUp(); 
             });  
         }
 
@@ -74,6 +92,14 @@ function (model, services)
             this.oView.oRouter.setHash(this.pageModel.hashString);
        
             console.log(" * <index.onPageLoad>");
+        },
+
+        // ______________________________________________________________
+        //                                                     onCleanUp
+        // clean up when new page is loaded.
+        onCleanUp: function()
+        {   
+
         }
 
 
