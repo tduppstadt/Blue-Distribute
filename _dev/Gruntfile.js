@@ -8,9 +8,11 @@ module.exports = function(grunt)
 	grunt.loadNpmTasks('grunt-rename');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-targethtml');
 
 	var projectName = grunt.option("pagename");
 	var distFolder = "_dist";
+
 
 	// Project configuration.
 	grunt.initConfig(
@@ -161,7 +163,7 @@ module.exports = function(grunt)
 			    {				 
 					name           : "config",			 	
 					baseUrl        : '../' + distFolder + '/Content/js/project/',	
-					include        : ['../libs/require-jquery.js'],	
+					include        : ['../libs/require.js'],	
 
 					optimize       : "uglify2",
 					mainConfigFile : '../' + distFolder + '/Content/js/project/config.js',				
@@ -172,7 +174,27 @@ module.exports = function(grunt)
 		
 			    }
 			}
-		}
+		},
+
+		// ------------ targethtml
+		// https://github.com/changer/grunt-targethtml
+		targethtml: 
+		{
+	        dist: 
+	        {
+	            options: 
+	            {
+	                curlyTags: 
+	                {
+	                    bustVersion: "v=" + (new Date()).getTime()
+	                }
+	            },
+	            files: 
+	            {
+	                '../_dist/index.html': 'src/index.html'
+	            }
+	        }
+	    }
 
 	});
 
@@ -180,7 +202,7 @@ module.exports = function(grunt)
 	// ------------ TASKS
 
 	// build JS and compile templates
-	grunt.registerTask('build', ['dot', 'linter', 'requirejs']);
+	grunt.registerTask('build', ['dot', 'linter', 'requirejs']); // , 'targethtml'
 
 	// compile templates
 	grunt.registerTask('buildTemplate', ['dot']);

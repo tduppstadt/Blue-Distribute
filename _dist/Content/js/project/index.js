@@ -43,10 +43,16 @@ function (view, formLogin)
         {          
             var self = this;
 
-            window.tEvent.addListener(window.tEvent.eventStr.EVENT_LOAD_INDEX, function(evt)
+            window.tEvent.addListener(window.tEvent.eventStr.EVENT_LOAD_INDEX, function(evt, data)
             {
-                self.onPageLoad();   
-            });            
+                self.onPageLoad(data);   
+            }); 
+
+            window.tEvent.addListener(window.tEvent.eventStr.EVENT_NEW_PAGE, function(evt, data)
+            {
+                // clean up for new page
+                self.onCleanUp(); 
+            });                
         },
 
         // ______________________________________________________________
@@ -69,9 +75,17 @@ function (view, formLogin)
         // --------------------------------------------------------------
         // ______________________________________________________________
         //                                                     onPageLoad
-        onPageLoad: function()
+        onPageLoad: function(data)
         {   
             console.log(" * <index.onPageLoad>");
+        },
+
+        // ______________________________________________________________
+        //                                                     onCleanUp
+        // clean up when new page is loaded.
+        onCleanUp: function()
+        {   
+
         }
 
     };

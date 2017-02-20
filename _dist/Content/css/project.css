@@ -59,7 +59,7 @@ table {
   border-spacing: 0;
 }
 
-/* normalize.css v2.1.1 | MIT License | git.io/normalize */
+/*! normalize.css v2.1.1 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
    ========================================================================== */
@@ -749,8 +749,7 @@ textarea {
 
   @page {
     margin: 0.5cm;
-}
-
+  }
   /* line 289, src/scss/support/improved.scss */
   p,
   h2,
@@ -782,12 +781,12 @@ textarea {
   }
 }
 
-/*
+/*!
  * Bootstrap v3.1.1 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-/* normalize.css v3.0.0 | MIT License | git.io/normalize */
+/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 /* line 8, src/scss/thirdParty/bootstrap/bootstrap.scss */
 html {
   font-family: sans-serif;
@@ -1171,7 +1170,7 @@ th {
 /* line 270, src/scss/thirdParty/bootstrap/bootstrap.scss */
 html {
   font-size: 62.5%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* line 275, src/scss/thirdParty/bootstrap/bootstrap.scss */
@@ -4167,7 +4166,6 @@ input[type="button"].btn-block {
   src: url("../fonts/glyphicons-halflings-regular.eot");
   src: url("../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
 }
-
 /* line 2382, src/scss/thirdParty/bootstrap/bootstrap.scss */
 .glyphicon {
   position: relative;
@@ -7273,29 +7271,21 @@ a.thumbnail.active {
 }
 
 @-webkit-keyframes progress-bar-stripes {
-  /* line 4501, src/scss/thirdParty/bootstrap/bootstrap.scss */
   from {
     background-position: 40px 0;
   }
-
-  /* line 4504, src/scss/thirdParty/bootstrap/bootstrap.scss */
   to {
     background-position: 0 0;
   }
 }
-
 @keyframes progress-bar-stripes {
-  /* line 4509, src/scss/thirdParty/bootstrap/bootstrap.scss */
   from {
     background-position: 40px 0;
   }
-
-  /* line 4512, src/scss/thirdParty/bootstrap/bootstrap.scss */
   to {
     background-position: 0 0;
   }
 }
-
 /* line 4516, src/scss/thirdParty/bootstrap/bootstrap.scss */
 .progress {
   height: 20px;
@@ -8720,7 +8710,7 @@ button.close {
   text-indent: -999px;
   cursor: pointer;
   background-color: #000 \9;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   border: 1px solid #fff;
   border-radius: 10px;
 }
@@ -8883,7 +8873,6 @@ button.close {
 @-ms-viewport {
   width: device-width;
 }
-
 /* line 5676, src/scss/thirdParty/bootstrap/bootstrap.scss */
 .visible-xs,
 .visible-sm,
@@ -9319,3 +9308,79 @@ a:active {
 	only screen and (min-device-pixel-ratio : 1.5) {	
 	}
  */
+/* line 17, src/scss/page-index.scss */
+.font-verdana, header .tagline, header .summary {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+/* line 21, src/scss/page-index.scss */
+.font-arial-black {
+  font-family: "Arial Black", Gadget, sans-serif;
+}
+
+/* line 25, src/scss/page-index.scss */
+.wrapper {
+  text-align: center;
+}
+
+/* line 29, src/scss/page-index.scss */
+.constrain {
+  box-sizing: border-box;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* line 38, src/scss/page-index.scss */
+header {
+  margin-top: 100px;
+}
+/* line 45, src/scss/page-index.scss */
+header .tagline {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ccc;
+}
+/* line 53, src/scss/page-index.scss */
+header .summary {
+  margin-top: 50px;
+  font-size: 16px;
+  position: relative;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+/* line 64, src/scss/page-index.scss */
+header .author {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #999;
+  font-style: oblique;
+}
+
+/* line 72, src/scss/page-index.scss */
+.content {
+  text-align: left;
+  margin-top: 60px;
+  margin-bottom: 100px;
+}
+/* line 77, src/scss/page-index.scss */
+.content ul {
+  list-style: disc outside none;
+  padding-left: 20px;
+}
+/* line 81, src/scss/page-index.scss */
+.content ul li {
+  padding-top: 15px;
+}
+/* line 86, src/scss/page-index.scss */
+.content .download-me {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/*# sourceMappingURL=project.css.map */

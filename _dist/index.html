@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
@@ -8,14 +8,14 @@
 <head>
 
 	<meta charset="utf-8">
-    <title>TS001</title>
+    <title>BLUE - Front End Framework | Back to the Roots</title>
     <meta name="Description" content="" >  
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- MOBILE -->
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" /> -->
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    
     <!-- TRACKING ID --> 
     <!-- <meta name="lbxID" content="135"> -->
 
@@ -34,9 +34,11 @@
 	<script type="text/javascript">		try { Typekit.load(); } catch ( e ) { }</script>
 	-->
 
-    <!-- Application styles -->
-	<link rel="stylesheet" href="Content/css/project.css">  
-	
+	<!-- Application styles -->
+	       
+		<link rel="stylesheet" href="Content/css/project.css?v=1426896749601"> 
+    
+    	
 	<!-- For Debugging 	
 		<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
 	-->
@@ -65,14 +67,68 @@
 	<!-- <script type="text/javascript" src="http://tracking.lbox.com/lbxTrack.js"></script> -->
 
 
-    <!-- js -->	
-	<script 			
-		data-page-structure = "single"
-		data-page-id        = "index"
-		data-json           = "Content/json/project.json" 		
-		data-main           = "Content/js/project/config" 		
-		src                 = "Content/js/libs/require.js">
-	</script>
+	<div class="wrapper">
+		<div class="constrain">
+			<header>
+				<img src="Content/images/global/blue.jpg"/>
+				<div class="author"><span style="font-size: 11px">by</span> Thom 'Dupp' Duppstadt</div>
+				<div class="tagline">Back to your Roots</div>
+				<div class="summary">It's called Blue, as in 'Blue Collar', a simple, layman's approach to a framework that just helps you organize and engineer large scale or small applications from the ground up using a vanilla JS OOP style approach.
+				</div>
+
+			</header>		
+		
+			<div class="content font-verdana">
+				<p><strong>Features:</strong></p>
+				<ul>
+					<li>Built on JQuery, RequireJS, doT, Validate, Grunt, SASS.</li>
+
+					<li>Flexible for multi-page or pageless designs using routes through custom hash management. </li>
+
+					<li>JSON configurations are loaded into the model. An environment variable is used to compare against the url to determine your environment specific properties like API service URLs. It is also used for custom environment behaviors like disabling console log in production.</li>
+
+					<li>Ability to work using minified or un-minified JS for faster development and troubleshooting.</li>
+					
+					<li>Query strings are used for debug modes.</li>
+
+					<li>Form handling and validation using Validate, including inline validation capability when input is off focus.</li>
+
+					<li>Modal handling using dynamic templates.</li>
+
+					
+
+					<li>The custom build script calling Grunt tasks offer these options:
+						<ul>
+							<li>Min/concat JS and templates and creates source maps for debugging</li>
+							<li>Cache busting for js, json, and css files</li>
+							<li>Compile doT templates to JS</li>
+							<li>Compress PNG</li>
+							<li>Create spritesheets and generate SASS files</li>
+							<li>Watch and compile SCSS</li>
+						</ul>
+					</li>
+
+					<li>This shows the general flow for different compenents. <a href="http://tduppstadt.com/Content/images/global/blue-flow-full.jpg" target="_blank">blue-flow-full.jpg</a></li>
+
+				</ul>
+
+				<p class="download-me"><strong>Download the framework here: </strong><a href="http://tduppstadt.com/project/blue/Content/download/Blue_framework.zip" target="_blank">Blue_framework.zip</a></p>
+			</div>
+
+
+		</div>
+	</div>
+
+    <!-- js -->		
+	
+       <script
+   			data-page-structure = "single"
+			data-json           = "Content/json/project.json?v=1426896749601" 		
+			data-main           = "Content/js/project/config" 		
+			src                 = "Content/js/release/project.js?v=1426896749601">
+		</script>
+    
+
 
 	<!-- 
 		data-page-structure [single, multi, hybrid]: This is handled in the router

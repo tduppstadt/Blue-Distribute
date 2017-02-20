@@ -16,10 +16,7 @@ require.config(
 		spearfishHelpers : "../libs/spearfish.helpers",         
 		gsCSSPlugin      : "../libs/greensock/plugins/CSSPlugin.min",
 		gsTweenLite      : "../libs/greensock/TweenLite.min",   
-		fbSdk            : "../libs/fb-js-sdk", 
-		fastclick        : "../libs/fastclick",
-		browserDetect    : "../libs/browserDetect", 
-		smoothPack       : "../libs/smooth.pack",       
+		fbSdk            : "../libs/fb-js-sdk",   
 		EventTarget      : "../libs/EventTarget",   
 		modernizr        : "../libs/modernizr-2.6.2.min",   
 		dot              : "../libs/doT",   
@@ -27,16 +24,29 @@ require.config(
 		validate         : "../libs/validate",
 		videojs          : "../libs/video",
 		bootstrap        : "../libs/bootstrap",
-		hammer           : "../libs/jquery.hammer",
+		hammer           : "../libs/hammer.min",
+		jHammer          : "../libs/jquery.hammer",
 		jquery           : "../libs/jquery"
 	},
 
 	shim: 
 	{
+		'jquery':
+		{
+			exports: "$"
+		},
+		
 		'bootstrap': 
 		{       
 			deps: ['jquery']           
 		},
+
+		'jHammer':
+		{
+			deps: ['jquery', 'hammer'] 
+		},
+
+
 
 		'common/model':
 		{
@@ -46,7 +56,18 @@ require.config(
 		'common/services':
 		{
 			deps: ['jquery'] 
+		},
+
+		'hammer': 
+		{       
+			deps: ['jquery']           
+		},
+
+		"common/router":
+		{
+			deps: ["spearfishHelpers", "common/model"]
 		}
+
 	},
 
 	// Initialize the application with the main application file
@@ -59,11 +80,12 @@ require.config(
 		"spearfishHelpers",
 		//"notify",
 		//"bootstrap",
-		//"hammer",
+		//"jHammer",		
 		
-		"common/router",
 		"globalNav",
-		"index"		
+		"index",
+
+		"common/router"	// keep last to load after the pages
 	]
 
 

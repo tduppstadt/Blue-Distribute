@@ -13,3 +13,78 @@ $imagePath       : $imagePathPrefix + "page-index/";
 // CSS
 //
 // ---------------------------------------------------------------
+
+.font-verdana {
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+.font-arial-black {
+	font-family: "Arial Black", Gadget, sans-serif;
+}
+
+.wrapper {
+	text-align: center;	
+}
+
+.constrain {
+	box-sizing: border-box;
+	max-width: 680px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+header {
+	margin-top: 100px;
+
+	img {
+		
+	}
+
+	.tagline {
+		margin-top: 20px;
+		@extend .font-verdana;
+		font-size: 22px;
+		font-weight: bold;
+		color: #ccc;
+	}
+
+	.summary {
+		margin-top: 50px;
+		@extend .font-verdana;
+		font-size: 16px;
+		position: relative;
+		border-top: 1px solid #ccc;
+    	border-bottom: 1px solid #ccc; 	
+    	padding-top: 30px;
+    	padding-bottom: 30px;	
+	}
+
+	.author {
+		font-size: 14px;
+	    margin-top: 10px;
+	    color: #999;
+	    font-style: oblique;
+	}
+}
+
+.content {
+	text-align: left;
+	margin-top: 60px;
+	margin-bottom: 100px;
+
+	ul {
+		list-style: disc outside none;
+		padding-left: 20px;
+
+		li {
+			padding-top: 15px;
+		}
+	}
+
+	.download-me {
+		text-align: center;
+		margin-top: 40px;
+	}
+}

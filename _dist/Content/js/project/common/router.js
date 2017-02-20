@@ -11,11 +11,11 @@
 */
 
 define([
-    "common/model",
-    "index"  
+    "modules/hash",
+    "common/model"
 ],
 
-function (model, PageIndex) 
+function (hash, model) 
 {
 
     // ---------------------------------------------------------------
@@ -23,7 +23,6 @@ function (model, PageIndex)
     // ROUTER
     //
     // ---------------------------------------------------------------
-    
 
     var Router = function()
     {       
@@ -37,11 +36,13 @@ function (model, PageIndex)
         this.PAGE_STRUCTURE_HYBRID = "hybrid";
 
         // core objects
-        this.oModel = model;                  
+        this.oModel = model;     
+        this.oHash = hash;
 
-        this.pageModel = {};
         this.oActivePage = {};
+        this.pageModel = {};
 
+        this.initPageModel();
         this.init();  
     };
 
@@ -71,8 +72,8 @@ function (model, PageIndex)
             console.log(" * <router.init> data-page-structure: " + structure);
             switch(structure)
             {
-                case this.PAGE_STRUCTURE_SINGLE:
-                    this.initHash();                     
+                case this.PAGE_STRUCTURE_SINGLE:  
+                    this.oHash.init();     
                     break;
 
                 case this.PAGE_STRUCTURE_MULTI:
@@ -80,11 +81,11 @@ function (model, PageIndex)
                     break;
 
                 case this.PAGE_STRUCTURE_HYBRID:
-                    this.initHash();
                     this.loadActivePage(); 
                     break;  
             }
-                     
+
+
         },
         
         // ______________________________________________________________
@@ -95,24 +96,36 @@ function (model, PageIndex)
         */
         initPageModel: function()
         {
-             this.pageModel = 
+            this.pageModel = 
             {
-                section:
-                {
+                page: {
                     index:
                     {
-                        hashString : "index",
+                        hashString : "default",
                         loadEvent  : window.tEvent.eventStr.EVENT_LOAD_INDEX
                     }
                 }
+                
             };
 
-            // give model page model ref
+            // give model page model ref            
             this.oModel.pageModel = this.pageModel;
+            
+            // register hash
+            var temp;
+            for (var key in this.pageModel.page) {
+                temp = this.pageModel.page[key];
+                this.oHash.pushHashEvent(temp.hashString, temp.loadEvent);
+            }
+
+            
         },
 
+
+
+
         // ______________________________________________________________
-        //                                                       initHash
+        //                                                 loadActivePage
         /* 
                 Used for multi page apps,
                 instantiate the class based on html data-page-id
@@ -135,72 +148,15 @@ function (model, PageIndex)
                     self.oActivePage = new PageIndex();           
                     break;
             }
-        },
-
-
-        // ______________________________________________________________
-        //                                                       initHash
-        initHash: function()
-        {      
-            var self = this;
-
-            // init page model (cotains available hash strings)
-            this.initPageModel();
-
-            window.allowHash = true;
-            window.onhashchange = function()
-            {      
-                window.tEvent.fire(window.tEvent.eventStr.EVENT_NEW_PAGE);
-                
-                // check for allowing updates based on hash                
-                if (!window.allowHash) 
-                {
-                    window.allowHash = true;
-                    return;
-                }
-
-                // find hash string and call event
-                var result = false;
-                exitIter:
-                for (var sectionKey in self.oModel.pageModel)
-                {
-                    for (var key in self.oModel.pageModel[sectionKey])
-                    {                        
-                        if (location.hash === "#" + self.oModel.pageModel[sectionKey][key].hashString)
-                        {                           
-                            result = true;                        
-                            window.tEvent.fire(self.oModel.pageModel[sectionKey][key].loadEvent);
-                            break exitIter;
-                        }
-                    }
-                }
-                return(result);
-            };          
-            
-        },
-
-
-        // ______________________________________________________________
-        //                                                    processHash
-        // Will return false if no hash is used. This can be used to determine
-        // anothe course of action.
-        processHash: function()
-        {
-            return(window.onhashchange());
-        },
-
-        // ______________________________________________________________
-        //                                                         setHash
-        setHash: function(str)
-        {
-            window.allowHash = false;
-            location.hash = str;
         }
+
+
 
 
         // --------------------------------------------------------------
         // HELPERS
         // --------------------------------------------------------------        
+       
 
 
         // --------------------------------------------------------------

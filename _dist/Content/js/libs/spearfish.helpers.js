@@ -488,8 +488,7 @@ window.helpers =
     {	
     	var output = {};
     	for (var i = 0; i < a.length; i++)
-    	{
-    		console.log("i", a[i].name);
+    	{    		
     		output[a[i].name] = a[i].value;
     	}
     	return (output);
@@ -508,6 +507,130 @@ window.helpers =
 		}
 
 		return a;
-    }
+    },
 
+    // ______________________________________________________________
+    //                                               parseDateTimeObj
+    /*
+        Takes an ISO 8661 format and parses it into usable date & time
+        {
+            date: "10/29/2014",
+            time: "2:15 PM"
+        }
+    */
+    parseDateTimeObj: function(isoString)
+    {
+    	var self = this;
+        var temp = new Date(isoString);
+
+        // parse date         
+        var date = temp.toLocaleDateString();
+
+        // parse time
+        var hour = temp.getHours();
+        var meridiem = " AM";
+        if (hour >= 12) 
+        {
+            hour-=12;   
+            if (hour !== 24)
+            {
+				meridiem = " PM";
+            }    
+        }
+        if (hour === 0) 
+    	{
+    		hour = 12; 
+    		meridiem = " AM";
+    	}
+        var minute = self.padNumber(temp.getMinutes(), 2);        
+
+        var time = hour + ":" + minute + meridiem;
+
+        return(
+        {
+            date: date,
+            time: time
+        });
+
+    },
+
+    // ______________________________________________________________    
+	//                                                   militaryTime
+    /* 
+        Converts military time.
+        Used to convert back into ISO 8861 format
+        "10:18 PM" ->
+        {
+			hour: 22,
+			minute: 18
+        }
+    */
+    militaryTime: function(time)
+    {
+        var self = this,
+        	temp,
+            hour,
+            minutes;
+
+        try
+        {
+            time = time.split(" ");
+            
+            temp = time[0].split(":");    
+            minute = Number(temp[1]);
+
+            // set valid minutes
+            if (isNaN(minute))
+            {
+                minute = 0;
+            }
+
+
+            // AM/PM
+            hour = Number(temp[0]);
+            if (time[1] === "PM" && hour !== 12) hour = Number(temp[0]) + 12;
+            if (time[1] === "AM" && hour === 12) hour = 0;
+        }
+        catch(e)
+        {                
+            hour = 0;
+            minute = 0;
+        }            
+
+		// pad number
+        minute = self.padNumber(minute, 2);
+
+        return(
+        {
+            hour: hour,
+            minute: minute
+        });
+    },
+
+    // ______________________________________________________________    
+	//                                                   checkNested
+    /* 
+        test for existence of nested object key
+
+        var test = {level1:{level2:{level3:'level3'}} };
+		checkNested(test, 'level1', 'level2', 'level3'); // true
+		checkNested(test, 'level1', 'level2', 'foo'); // false
+    */
+	checkNested: function(obj) 
+	{
+		var args = Array.prototype.slice.call(arguments),
+		obj = args.shift();
+
+		for (var i = 0; i < args.length; i++) 
+		{
+			if (!obj || !obj.hasOwnProperty(args[i])) 
+			{
+				return false;
+			}
+			obj = obj[args[i]];
+		}
+		return true;
+	}
+
+	
 };
