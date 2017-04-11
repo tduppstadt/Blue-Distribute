@@ -1,144 +1,92 @@
 <!DOCTYPE html>
 
-<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>  	   <html> <![endif]-->
+	<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+	<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
+	<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+	<!--[if gt IE 8]>  	   <html> <![endif]-->
 
-<head>
+	<head>
 
-	<meta charset="utf-8">
-    <title>BLUE - Front End Framework | Back to the Roots</title>
-    <meta name="Description" content="" >  
+		<meta charset="utf-8">
+	    <title>BLUE - Front End Framework | Back to the Roots</title>
+	    <meta name="Description" content="" >  
 
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <!-- MOBILE -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-    
-    <!-- TRACKING ID --> 
-    <!-- <meta name="lbxID" content="135"> -->
+	    <!-- MOBILE -->
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+	    
+	    <!-- FACEBOOK META -->
+	    <!-- 
+	    <meta property="og:type" content="website"> 
+	    <meta property="og:url" content=""> 
+	    <meta property="og:image" content="">    
+	    <meta property="og:title" content="">
+	    <meta property="og:description" content=""> 
+		-->
 
-    <!-- FACEBOOK META -->
-    <!-- 
-    <meta property="og:type" content="website"> 
-    <meta property="og:url" content=""> 
-    <meta property="og:image" content="">    
-    <meta property="og:title" content="">
-    <meta property="og:description" content=""> 
-	-->
+		<!-- TYPE KIT -->
+		<!--  
+	    <script type="text/javascript" src="//use.typekit.net/kyq4odo.js"></script>
+		<script type="text/javascript">		try { Typekit.load(); } catch ( e ) { }</script>
+		-->
 
-	<!-- TYPE KIT -->
-	<!--  
-    <script type="text/javascript" src="//use.typekit.net/kyq4odo.js"></script>
-	<script type="text/javascript">		try { Typekit.load(); } catch ( e ) { }</script>
-	-->
-
-	<!-- Application styles -->
-	       
+		<!-- Application styles -->	       
 		<link rel="stylesheet" href="Content/css/project.css?v=1426896749601"> 
-    
-    	
-	<!-- For Debugging 	
-		<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
-	-->
+	    
+	    	
+		<!-- For Debugging 	
+			<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
+		-->
 
-	<!-- USED FOR VIDEOS -->
-	<!--[if lt IE 9]> <script src="Content/js/libs/html5shiv.js"></script> <![endif]-->
-	
-	<!-- FOR IE to make standards compliant-->
-	<!--[if lt IE 7]>
-		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js"></script>
-	<![endif]-->
-	<!--[if lt IE 8]>
-		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
-	<![endif]-->
-	<!--[if lt IE 9]>
-		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
-	<![endif]-->
-</head>
-
-<body>
-	<!-- preload images -->
-	<!-- <div id="preloadedImages" style="display:none;"></div> -->
-
-
-	<!-- tracking -->  
-	<!-- <script type="text/javascript" src="http://tracking.lbox.com/lbxTrack.js"></script> -->
-
-
-	<div class="wrapper">
-		<div class="constrain">
-			<header>
-				<img src="Content/images/global/blue.jpg"/>
-				<div class="author"><span style="font-size: 11px">by</span> Thom 'Dupp' Duppstadt</div>
-				<div class="tagline">Back to your Roots</div>
-				<div class="summary">It's called Blue, as in 'Blue Collar', a simple, layman's approach to a framework that just helps you organize and engineer large scale or small applications from the ground up using a vanilla JS OOP style approach.
-				</div>
-
-			</header>		
+		<!-- USED FOR VIDEOS -->
+		<!--[if lt IE 9]> <script src="Content/js/libs/html5shiv.js"></script> <![endif]-->
 		
-			<div class="content font-verdana">
-				<p><strong>Features:</strong></p>
-				<ul>
-					<li>Built on JQuery, RequireJS, doT, Validate, Grunt, SASS.</li>
+		<!-- FOR IE to make standards compliant-->
+		<!--[if lt IE 7]>
+			<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js"></script>
+		<![endif]-->
+		<!--[if lt IE 8]>
+			<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
+		<![endif]-->
+		<!--[if lt IE 9]>
+			<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+		<![endif]-->
 
-					<li>Flexible for multi-page or pageless designs using routes through custom hash management. </li>
+	</head>
 
-					<li>JSON configurations are loaded into the model. An environment variable is used to compare against the url to determine your environment specific properties like API service URLs. It is also used for custom environment behaviors like disabling console log in production.</li>
+	<body>
 
-					<li>Ability to work using minified or un-minified JS for faster development and troubleshooting.</li>
-					
-					<li>Query strings are used for debug modes.</li>
+		<div class="wrapper">
+			<div class="constrain">
 
-					<li>Form handling and validation using Validate, including inline validation capability when input is off focus.</li>
+				<!-- content -->
+				<main></main>
 
-					<li>Modal handling using dynamic templates.</li>
-
-					
-
-					<li>The custom build script calling Grunt tasks offer these options:
-						<ul>
-							<li>Min/concat JS and templates and creates source maps for debugging</li>
-							<li>Cache busting for js, json, and css files</li>
-							<li>Compile doT templates to JS</li>
-							<li>Compress PNG</li>
-							<li>Create spritesheets and generate SASS files</li>
-							<li>Watch and compile SCSS</li>
-						</ul>
-					</li>
-
-					<li>This shows the general flow for different compenents. <a href="http://tduppstadt.com/Content/images/global/blue-flow-full.jpg" target="_blank">blue-flow-full.jpg</a></li>
-
-				</ul>
-
-				<p class="download-me"><strong>Download the framework here: </strong><a href="https://github.com/tduppstadt/Blue-Distribute" target="_blank">https://github.com/tduppstadt/Blue-Distribute</a></p>
 			</div>
-
-
 		</div>
-	</div>
 
-    <!-- js -->		
-	
-       <script
-   			data-page-structure = "single"
+
+
+	    <!-- js -->			
+	   <script
+			data-page-structure = "single"
 			data-json           = "Content/json/project.json?v=1426896749601" 		
 			data-main           = "Content/js/project/config" 		
 			src                 = "Content/js/release/project.js?v=1426896749601">
 		</script>
-    
+	    
 
 
-	<!-- 
-		data-page-structure [single, multi, hybrid]: This is handled in the router
-			'single' uses hash strings, 
-			'multi' uses the data-page-id to instantiate  page classes. 
-			'hybrid' uses both.
+		<!-- 
+			data-page-structure [single, multi, hybrid]: This is handled in the router
+				'single' uses hash strings, 
+				'multi' uses the data-page-id to instantiate  page classes. 
+				'hybrid' uses both.
 
-		src= "Content/js/libs/require.js"
-		src= "Content/js/release/project.js"
-	 -->	
+			src= "Content/js/libs/require.js"
+			src= "Content/js/release/project.js"
+		 -->	
 
-</body>
+	</body>
 </html>

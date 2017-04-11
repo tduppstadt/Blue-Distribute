@@ -65,7 +65,13 @@ require.config(
 
 		"common/router":
 		{
-			deps: ["spearfishHelpers", "common/model"]
+			deps: [
+				"spearfishHelpers", 
+				"common/model",
+
+				// list all pages here
+				"index"
+			]
 		}
 
 	},
@@ -75,16 +81,14 @@ require.config(
 		"jquery",
 		"EventTarget",
 		"Templates",
-		//"gsCSSPlugin",
-		//"gsTweenLite",
+		"gsCSSPlugin",
+		"gsTweenLite",
 		"spearfishHelpers",
 		//"notify",
 		//"bootstrap",
-		//"jHammer",		
-		
+		//"jHammer",
+		"index",	
 		"globalNav",
-		"index",
-
 		"common/router"	// keep last to load after the pages
 	]
 

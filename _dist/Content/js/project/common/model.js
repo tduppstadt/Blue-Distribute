@@ -13,20 +13,24 @@ function (helpers)
    
     var constructor = function ()
     {   
+        console.log(" * <model>");
+
         // events
         window.tEvent.eventStr.EVENT_JSON_LOADED = "EVENT_JSON_LOADED";
 
         // page events
-        window.tEvent.eventStr.EVENT_NEW_PAGE = "EVENT_NEW_PAGE";
-        window.tEvent.eventStr.EVENT_LOAD_INDEX = "EVENT_LOAD_INDEX";
-        
+        window.tEvent.eventStr.EVENT_NEW_PAGE     = "EVENT_NEW_PAGE";
+        window.tEvent.eventStr.EVENT_PAGE_LOADED  = "EVENT_PAGE_LOADED";
 
-        // useful
+        // maintains page data for router
+        this.pageModel = { page:{} };
+
+        // query string object
         this.queryString = window.helpers.parseQuerystring();     
 
         // debug mode   
-        this.debugMode = false;
-        if (this.queryString.lbxdebug && this.queryString.lbxdebug === "1") this.debugMode = true; 
+        this.debugMode = this.getDebugMode();
+        
 
         this.jConfig = {};
 
@@ -58,6 +62,18 @@ function (helpers)
         }, 
 
         // ______________________________________________________________
+        //                                                   getDebugMode
+        getDebugMode: function()
+        {
+            var debug = false;
+            if (this.queryString.devdebug && this.queryString.devdebug === "1") 
+                debug = true;
+
+            return debug;
+
+        },
+
+        // ______________________________________________________________
         //                                                       loadJson
         loadJson: function()
         {
@@ -68,7 +84,7 @@ function (helpers)
                 self.manageEnv();
                 window.tEvent.fire(window.tEvent.eventStr.EVENT_JSON_LOADED, data);
                 
-                console.log(" * <Model.loadJson>", data); 
+                console.log(" * <model.loadJson>", data); 
             });    
 
         },
