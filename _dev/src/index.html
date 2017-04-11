@@ -1,92 +1,93 @@
 ﻿<!DOCTYPE html>
 
-<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>  	   <html> <![endif]-->
+	<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+	<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
+	<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+	<!--[if gt IE 8]>  	   <html> <![endif]-->
 
-<head>
+	<head>
 
-	<meta charset="utf-8">
-    <title>TS001</title>
-    <meta name="Description" content="" >  
+		<meta charset="utf-8">
+	    <title>BLUE - Front End Framework | Back to the Roots</title>
+	    <meta name="Description" content="" >  
 
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <!-- MOBILE -->
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" /> -->
+	    <!-- MOBILE -->
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+	    
+	    <!-- FACEBOOK META -->
+	    <!-- 
+	    <meta property="og:type" content="website"> 
+	    <meta property="og:url" content=""> 
+	    <meta property="og:image" content="">    
+	    <meta property="og:title" content="">
+	    <meta property="og:description" content=""> 
+		-->
 
-    <!-- TRACKING ID --> 
-    <!-- <meta name="lbxID" content="135"> -->
+		<!-- TYPE KIT -->
+		<!--  
+	    <script type="text/javascript" src="//use.typekit.net/kyq4odo.js"></script>
+		<script type="text/javascript">		try { Typekit.load(); } catch ( e ) { }</script>
+		-->
 
-    <!-- FACEBOOK META -->
-    <!-- 
-    <meta property="og:type" content="website"> 
-    <meta property="og:url" content=""> 
-    <meta property="og:image" content="">    
-    <meta property="og:title" content="">
-    <meta property="og:description" content=""> 
-	-->
+		<!-- Application styles -->	       
+		<link rel="stylesheet" href="Content/css/styles.css?{{bustVersion}}"> 
+	    
+	    	
+		<!-- For Debugging 	
+			<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
+		-->
 
-	<!-- TYPE KIT -->
-	<!--  
-    <script type="text/javascript" src="//use.typekit.net/kyq4odo.js"></script>
-	<script type="text/javascript">		try { Typekit.load(); } catch ( e ) { }</script>
-	-->
+		<!-- USED FOR VIDEOS -->
+		<!--[if lt IE 9]> <script src="Content/js/libs/html5shiv.js"></script> <![endif]-->
+		
+		<!-- FOR IE to make standards compliant-->
+		<!--[if lt IE 7]>
+			<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js"></script>
+		<![endif]-->
+		<!--[if lt IE 8]>
+			<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
+		<![endif]-->
+		<!--[if lt IE 9]>
+			<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+		<![endif]-->
 
-	<!-- Application styles -->
-	<!--(if target dist)>       
-		<link rel="stylesheet" href="Content/css/project.css?{{bustVersion}}"> 
-    <!(endif)-->
-    	
-	<!-- For Debugging 	
-		<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
-	-->
+	</head>
 
-	<!-- USED FOR VIDEOS -->
-	<!--[if lt IE 9]> <script src="Content/js/libs/html5shiv.js"></script> <![endif]-->
-	
-	<!-- FOR IE to make standards compliant-->
-	<!--[if lt IE 7]>
-		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js"></script>
-	<![endif]-->
-	<!--[if lt IE 8]>
-		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
-	<![endif]-->
-	<!--[if lt IE 9]>
-		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
-	<![endif]-->
-</head>
+	<body>
 
-<body>
-	<!-- preload images -->
-	<!-- <div id="preloadedImages" style="display:none;"></div> -->
+		<div class="wrapper">
+			<div class="constrain">
+
+				<!-- content -->
+				<main></main>
+
+			</div>
+		</div>
 
 
-	<!-- tracking -->  
-	<!-- <script type="text/javascript" src="http://tracking.lbox.com/lbxTrack.js"></script> -->
 
-
-    <!-- js -->		
-	<!--(if target dist)>
-       <script
-   			data-page-structure = "single"
+	    <!-- js -->			
+	   <script
+			data-page-structure = "single"
 			data-json           = "Content/json/project.json?{{bustVersion}}" 		
 			data-main           = "Content/js/project/config" 		
 			src                 = "Content/js/release/project.js?{{bustVersion}}">
 		</script>
-    <!(endif)-->
+	    
 
 
-	<!-- 
-		data-page-structure [single, multi, hybrid]: This is handled in the router
-			'single' uses hash strings, 
-			'multi' uses the data-page-id to instantiate  page classes. 
-			'hybrid' uses both.
+		<!-- 
+			data-page-structure [single, multi, hybrid]: This is handled in the router
+				'single' uses hash strings, 
+				'multi' uses the data-page-id to instantiate  page classes. 
+				'hybrid' uses both.
 
-		src= "Content/js/libs/require.js"
-		src= "Content/js/release/project.js"
-	 -->	
+			src= "Content/js/libs/require.js?{{bustVersion}}"
+			src= "Content/js/release/project.js?{{bustVersion}}"
+		 -->	
 
-</body>
+	</body>
 </html>
+

@@ -1,0 +1,25 @@
+// ---------------------------------------------------------------
+//
+// VARIABLES
+//
+// include this file in all other .scss files
+// @import "variables";
+//
+// --------------------------------------------------------------- 
+
+// paths
+$imagePathPrefix: "../images/";
+$globalImagePath: $imagePathPrefix + "global/";
+
+
+// colors
+$linkColor: blue;
+
+
+// fonts
+@mixin mainFont
+{
+	font-family: sans-serif;
+}
+
+

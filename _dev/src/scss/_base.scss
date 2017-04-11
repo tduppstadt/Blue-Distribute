@@ -1,0 +1,35 @@
+// ---------------------------------------------------------------
+//
+// BASE ELEMENTS
+//
+// --------------------------------------------------------------- 
+
+@import "variables";
+
+html,
+body
+{	
+
+	background-color  : white;
+	color             : block;
+	@include mainFont;	
+}
+
+// link
+a
+{
+	&:link,
+	&:visited,
+	&:hover,
+	&:active
+	{
+		color: $linkColor;
+	}
+
+	&:active
+	{
+		// gives the link a press state
+		margin-top: 1px;
+	}
+
+}
