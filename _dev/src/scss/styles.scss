@@ -8,13 +8,15 @@
 @import "support/reset";
 @import "support/normalize";
 @import "support/improved";
-@import "support/responsive";
 @import "thirdParty/bootstrap/bootstrap";
 @import "support/helper-classes";
-@import "sprites/sprites";
 
 // custom
-@import "global-project";
+@import "sprites/sprites";
+@import "variables";
+@import "base";
+@import "layout";
 @import "forms";
 
+// pages
 @import "page-index";

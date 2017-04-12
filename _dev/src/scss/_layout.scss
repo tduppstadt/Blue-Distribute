@@ -1,89 +1,31 @@
-
-
 // ---------------------------------------------------------------
 //
-// VARIABLES
-//
-// --------------------------------------------------------------- 
-$imagePathPrefix: "../images/";
-$globalImagePath: $imagePathPrefix + "global/";
-
-@mixin mainFont
-{
-	font-family: sans-serif;
-}
-
-// responsive
-// set your max document width
-$responsive-max-width: 640;
-@function mix-responsivePercentage($n)
-{
-	@return percentage($n / $responsive-max-width);	
-}
-
-
-// ---------------------------------------------------------------
-//
-// CSS
+// LAYOUT - Common classes
 //
 // --------------------------------------------------------------- 
 
 
-
-// ----------------------------------
-// main tags
-// ----------------------------------
-html,
-body
-{	
-
-	background-color  : white;
-	color             : block;
-	@include mainFont;	
+// fonts
+.font-verdana {
+	font-family: Verdana, Geneva, sans-serif;
 }
 
-// link
-$linkColor: blue;
-a
-{
-	&:link,
-	&:visited,
-	&:hover,
-	&:active
-	{
-		color: $linkColor;
-	}
-
-	&:active
-	{
-		// gives the link a press state
-		margin-top: 1px;
-	}
-
+.font-arial-black {
+	font-family: "Arial Black", Gadget, sans-serif;
 }
 
-
-
-// ----------------------------------
-// global assets
-// ----------------------------------
-.button
-{
-	text-align       : center;
-	background-color : gray;
-	color            : white;
-	font-weight      : bold;
-	padding-top      : 10px;
-	padding-bottom   : 10px;
-	cursor           : hand;
-	cursor           : pointer;
-	z-index          : 1;
-	position         : relative;
+.wrapper {
+	text-align: center;	
 }
 
-
-
-
+.constrain {
+	box-sizing: border-box;
+	max-width: 680px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 20px;
+	padding-right: 20px;
+}
 
 // ---------------------------------------------------------------
 //
@@ -159,6 +101,3 @@ a
 	only screen and (min-device-pixel-ratio : 1.5) {	
 	}
  */
-
-
-

@@ -11,7 +11,7 @@ function (view)
     //
     // ---------------------------------------------------------------
 
-    var constructor = function ()
+    var constructr = function ()
     {
         console.log(" * <index>");
         this.oView = view;
@@ -19,10 +19,10 @@ function (view)
         this.init();
     };
 
-    var methods =
+    var inheritMethods =
     {    
         // --------------------------------------------------------------
-        // METHODS
+        // inheritMethods
         // --------------------------------------------------------------
         
         // ______________________________________________________________
@@ -61,8 +61,8 @@ function (view)
 
     };
 
-    var Class = constructor;
-    Class.prototype = methods;
+    var Class = constructr;
+    Class.prototype = inheritMethods;
    
     return (Class);        
    

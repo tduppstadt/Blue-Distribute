@@ -57,6 +57,8 @@ function (hash, model)
         //                                                           init
         init: function()
         {   
+            // register pages
+            this.initPageModel();
             
             /* 
                 Used for single page apps,
@@ -96,32 +98,15 @@ function (hash, model)
         */
         initPageModel: function()
         {
-            this.pageModel = 
-            {
-                page: {
-                    index:
-                    {
-                        hashString : "default",
-                        loadEvent  : window.tEvent.eventStr.EVENT_LOAD_INDEX
-                    }
-                }
-                
-            };
+            var pageModel = this.oModel.pageModel;
 
-            // give model page model ref            
-            this.oModel.pageModel = this.pageModel;
-            
             // register hash
             var temp;
-            for (var key in this.pageModel.page) {
-                temp = this.pageModel.page[key];
+            for (var key in pageModel.page) {
+                temp = pageModel.page[key];
                 this.oHash.pushHashEvent(temp.hashString, temp.loadEvent);
             }
-
-            
         },
-
-
 
 
         // ______________________________________________________________

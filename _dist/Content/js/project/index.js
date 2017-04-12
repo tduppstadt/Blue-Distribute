@@ -1,9 +1,8 @@
 define([
-    "common/view",
-    "forms/form_login"  
+    "common/view"
 ], 
 
-function (view, formLogin)
+function (view)
 {
 
     // ---------------------------------------------------------------
@@ -12,19 +11,20 @@ function (view, formLogin)
     //
     // ---------------------------------------------------------------
 
-    var constructor = function ()
+    var constructr = function ()
     {
+        this.eventString = "EVENT_LOAD_INDEX";
+        this.hashString = "default";
+        this.pageTemplate = window.oTemplates.p_index;
         this.oView = view;
-
-        this.oForm = formLogin;
         
         this.init();
     };
 
-    var methods =
+    var inheritMethods =
     {    
         // --------------------------------------------------------------
-        // METHODS
+        // inheritMethods
         // --------------------------------------------------------------
         
         // ______________________________________________________________
@@ -32,8 +32,24 @@ function (view, formLogin)
         init: function()
         {           
             console.log(" * <index>");
-         
+            
+            this.registerPage();
             this.assignListeners();
+        },
+
+        // ______________________________________________________________
+        //                                                   registerPage
+        registerPage: function()
+        {  
+            this.oView.registerPage({
+                events: [this.eventString],
+                routes: {
+                    index: {
+                        hashString : this.hashString,
+                        loadEvent  : this.eventString
+                    }
+                }
+            });
         },
 
 
@@ -42,8 +58,8 @@ function (view, formLogin)
         assignListeners: function()
         {          
             var self = this;
-
-            window.tEvent.addListener(window.tEvent.eventStr.EVENT_LOAD_INDEX, function(evt, data)
+            
+            window.tEvent.addListener(this.eventString, function(evt, data)
             {
                 self.onPageLoad(data);   
             }); 
@@ -51,19 +67,9 @@ function (view, formLogin)
             window.tEvent.addListener(window.tEvent.eventStr.EVENT_NEW_PAGE, function(evt, data)
             {
                 // clean up for new page
-                self.onCleanUp(); 
+                self.onCleanUp(data); 
             });                
-        },
-
-        // ______________________________________________________________
-        //                                         assignDynamicListeners
-        assignDynamicListeners: function()
-        {          
-            var self = this;
-        },
-
-        
-
+        },  
 
         // --------------------------------------------------------------
         // HELPERS
@@ -78,23 +84,23 @@ function (view, formLogin)
         onPageLoad: function(data)
         {   
             console.log(" * <index.onPageLoad>");
+            this.oView.loadPageTemplate(this.pageTemplate());
         },
 
         // ______________________________________________________________
         //                                                     onCleanUp
         // clean up when new page is loaded.
-        onCleanUp: function()
+        onCleanUp: function(data)
         {   
 
         }
 
     };
 
-    var Class = constructor;
-    Class.prototype = methods;
-    
+    var Class = constructr;
+    Class.prototype = inheritMethods;    
     var instance = new Class();
     
-    return (Class);     
+    return (instance);     
    
 });

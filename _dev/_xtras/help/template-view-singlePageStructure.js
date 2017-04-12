@@ -1,114 +1,123 @@
-/*
-    Creating a new page. 
-
-    create new event string for the new page in common/model.js
-    create a js file to hold the page object (this page)
-    - Update the assignListeners() for this pages event
-    common/router.js update the initPageModel() with the hash to look for and the event to be called.
-    add page to config to load the page
-
-*/
-
-
 define([
-    "common/model",
-    "common/services"
-],
+    "common/view"
+], 
 
-function (model, services) 
+function (view)
 {
 
     // ---------------------------------------------------------------
     //
-    // PAGE INDEX
+    // PAGE NAME 
     //
     // ---------------------------------------------------------------
-   
-    var constructor = function()
+
+    var constructr = function ()
     {
-        console.log(" * <view>");
+        this.eventString = "EVENT_LOAD_INDEX"; // event string called to load page
+        this.hashString = "default"; // hash string to load page
+        this.pageTemplate = window.oTemplates.p_index; // template used 
 
-        var self = this;
+        this.oView = view;
         
-        // core objects
-        this.oModel    = model;   
-        this.oServices = services;  
-
         this.init();
     };
 
-    var methods =
-    {
-
+    var inheritMethods =
+    {    
         // --------------------------------------------------------------
-        // METHODS
+        // inheritMethods
         // --------------------------------------------------------------
-
+        
         // ______________________________________________________________
         //                                                           init
         init: function()
-        {   
-            console.log(" * <index>");
-
-            this.assignListeners();   
-           
+        {           
+            console.log(" * <pageName>");
+            
+            this.registerPage();
+            this.assignListeners();
         },
 
         // ______________________________________________________________
-        //                                                assignListeners
-        assignListeners: function()
-        {
-            var self = this;    
+        //                                                   registerPage
+        /*
+            This function should not be altered. It registers the page with
+            the router and the hash module for deeplinking
+        */
+        registerPage: function()
+        {  
+            this.oView.registerPage({
+                events: [this.eventString],
+                routes: {
+                    index: {
+                        hashString : this.hashString,
+                        loadEvent  : this.eventString
+                    }
+                }
+            });
+        },
 
-            // page load event
-            window.tEvent.addListener(window.tEvent.eventStr.EVENT_LOAD_INDEX, function(evt, data)
+
+        // ______________________________________________________________
+        //                                                assignListeners
+        /*
+            define event listeners here
+        */
+        assignListeners: function()
+        {          
+            var self = this;
+            
+            // listen for page event string
+            window.tEvent.addListener(this.eventString, function(evt, data)
             {
                 self.onPageLoad(data);   
             }); 
 
+            // listen if a new page has been loaded
             window.tEvent.addListener(window.tEvent.eventStr.EVENT_NEW_PAGE, function(evt, data)
             {
                 // clean up for new page
-                self.onCleanUp(); 
-            });  
-        }
+                self.onCleanUp(data); 
+            });                
+        },
+
+      
 
         // --------------------------------------------------------------
         // HELPERS
-        // --------------------------------------------------------------        
+        // --------------------------------------------------------------
 
 
         // --------------------------------------------------------------
         // EVENTS
-        // --------------------------------------------------------------      
-        
+        // --------------------------------------------------------------
         // ______________________________________________________________
         //                                                     onPageLoad
-        onPageLoad: function()
+        /*
+            Called from listener when page is ready to be loaded.
+        */
+        onPageLoad: function(data)
         {   
-            var self = this;
-           
-            // set page hash        
-            this.oView.oRouter.setHash(this.pageModel.hashString);
-       
             console.log(" * <index.onPageLoad>");
+            this.oView.loadPageTemplate(this.pageTemplate());
         },
 
         // ______________________________________________________________
         //                                                     onCleanUp
-        // clean up when new page is loaded.
-        onCleanUp: function()
+        /*
+            clean up when new page is loaded if necessary.
+        */
+        onCleanUp: function(data)
         {   
 
         }
 
-
     };
 
-    var Class = constructor;
-    Class.prototype = methods;
-
+    var Class = constructr;
+    Class.prototype = inheritMethods;    
     var instance = new Class();
     
-    return (instance);  
+    return (instance);     
+   
 });

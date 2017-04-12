@@ -764,23 +764,6 @@ textarea {
     page-break-after: avoid;
   }
 }
-/* line 3, src/scss/support/_responsive.scss */
-.responsive {
-  max-width: 100%;
-  height: auto;
-}
-
-/* line 43, src/scss/support/_responsive.scss */
-.responsive-text {
-  font-size: 1em;
-}
-@media only screen and (max-width: 600px) {
-  /* line 43, src/scss/support/_responsive.scss */
-  .responsive-text {
-    font-size: .5em;
-  }
-}
-
 /*!
  * Bootstrap v3.1.1 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
@@ -9087,7 +9070,7 @@ img {
   display: inline-block;
 }
 
-/* line 36, src/scss/_global-project.scss */
+/* line 9, src/scss/_base.scss */
 html,
 body {
   background-color: white;
@@ -9095,27 +9078,38 @@ body {
   font-family: sans-serif;
 }
 
-/* line 49, src/scss/_global-project.scss */
+/* line 21, src/scss/_base.scss */
 a:link, a:visited, a:hover, a:active {
   color: blue;
 }
-/* line 57, src/scss/_global-project.scss */
+/* line 29, src/scss/_base.scss */
 a:active {
   margin-top: 1px;
 }
 
-/* line 70, src/scss/_global-project.scss */
-.button {
+/* line 9, src/scss/_layout.scss */
+.font-verdana, header .tagline, header .summary {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+/* line 13, src/scss/_layout.scss */
+.font-arial-black {
+  font-family: "Arial Black", Gadget, sans-serif;
+}
+
+/* line 17, src/scss/_layout.scss */
+.wrapper {
   text-align: center;
-  background-color: gray;
-  color: white;
-  font-weight: bold;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  cursor: hand;
-  cursor: pointer;
-  z-index: 1;
-  position: relative;
+}
+
+/* line 21, src/scss/_layout.scss */
+.constrain {
+  box-sizing: border-box;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 /* 
@@ -9209,142 +9203,18 @@ a:active {
   visibility: hidden;
 }
 
-/* line 36, src/scss/_global-project.scss */
-html,
-body {
-  background-color: white;
-  color: block;
-  font-family: sans-serif;
-}
-
-/* line 49, src/scss/_global-project.scss */
-a:link, a:visited, a:hover, a:active {
-  color: blue;
-}
-/* line 57, src/scss/_global-project.scss */
-a:active {
-  margin-top: 1px;
-}
-
-/* line 70, src/scss/_global-project.scss */
-.button {
-  text-align: center;
-  background-color: gray;
-  color: white;
-  font-weight: bold;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  cursor: hand;
-  cursor: pointer;
-  z-index: 1;
-  position: relative;
-}
-
-/* 
-	min-width: 320px  // smartphones, iPhone, portrait 480x320 phones
-	min-width: 481px  // portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide.
-	min-width: 641px  // portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 and 854x480 phones
-	min-width: 961px  // tablet, landscape iPad, lo-res laptops ands desktops
-	min-width: 1025px // big landscape tablets, laptops, and desktops
-	min-width: 1281px // hi-res laptops and desktops
-
-	@media only screen and (max-width: 600px) 
-	{	
-
-
-	}	
-	
-	// EXAMPLES
-
-	// Smartphones (portrait and landscape) -----------
-	@media only screen 
-	and (min-device-width : 320px) 
-	and (max-device-width : 480px) {	
-	}
-
-	// Smartphones (landscape) -----------
-	@media only screen 
-	and (min-width : 321px) {
-	}
-
-	// Smartphones (portrait) ----------
-	@media only screen 
-	and (max-width : 320px) {
-	}
-
-	// iPads (portrait and landscape) ----------- 
-	@media only screen 
-	and (min-device-width : 768px) 
-	and (max-device-width : 1024px) {
-	}
-
-	// iPads (landscape) -----------
-	@media only screen 
-	and (min-device-width : 768px) 
-	and (max-device-width : 1024px) 
-	and (orientation : landscape) {
-	}
-
-	// iPads (portrait) -----------
-	@media only screen 
-	and (min-device-width : 768px) 
-	and (max-device-width : 1024px) 
-	and (orientation : portrait) {
-	}
-
-	// Desktops and laptops -----------
-	@media only screen 
-	and (min-width : 1224px) {
-	}
-
-	// Large screens ----------- 
-	@media only screen 
-	and (min-width : 1824px) {
-	}
-
-	// iPhone 4 -----------
-	@media
-	only screen and (-webkit-min-device-pixel-ratio : 1.5),
-	only screen and (min-device-pixel-ratio : 1.5) {	
-	}
- */
-/* line 17, src/scss/_page-index.scss */
-.font-verdana, header .tagline, header .summary {
-  font-family: Verdana, Geneva, sans-serif;
-}
-
-/* line 21, src/scss/_page-index.scss */
-.font-arial-black {
-  font-family: "Arial Black", Gadget, sans-serif;
-}
-
-/* line 25, src/scss/_page-index.scss */
-.wrapper {
-  text-align: center;
-}
-
-/* line 29, src/scss/_page-index.scss */
-.constrain {
-  box-sizing: border-box;
-  max-width: 680px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-/* line 38, src/scss/_page-index.scss */
+/* line 14, src/scss/_page-index.scss */
 header {
   margin-top: 100px;
 }
-/* line 45, src/scss/_page-index.scss */
+/* line 21, src/scss/_page-index.scss */
 header .tagline {
   margin-top: 20px;
   font-size: 22px;
   font-weight: bold;
   color: #ccc;
 }
-/* line 53, src/scss/_page-index.scss */
+/* line 29, src/scss/_page-index.scss */
 header .summary {
   margin-top: 50px;
   font-size: 16px;
@@ -9354,7 +9224,7 @@ header .summary {
   padding-top: 30px;
   padding-bottom: 30px;
 }
-/* line 64, src/scss/_page-index.scss */
+/* line 40, src/scss/_page-index.scss */
 header .author {
   font-size: 14px;
   margin-top: 10px;
@@ -9362,25 +9232,25 @@ header .author {
   font-style: oblique;
 }
 
-/* line 72, src/scss/_page-index.scss */
+/* line 48, src/scss/_page-index.scss */
 .content {
   text-align: left;
   margin-top: 60px;
   margin-bottom: 100px;
 }
-/* line 77, src/scss/_page-index.scss */
+/* line 53, src/scss/_page-index.scss */
 .content ul {
   list-style: disc outside none;
   padding-left: 20px;
 }
-/* line 81, src/scss/_page-index.scss */
+/* line 57, src/scss/_page-index.scss */
 .content ul li {
   padding-top: 15px;
 }
-/* line 86, src/scss/_page-index.scss */
+/* line 62, src/scss/_page-index.scss */
 .content .download-me {
   text-align: center;
   margin-top: 40px;
 }
 
-/*# sourceMappingURL=project.css.map */
+/*# sourceMappingURL=styles.css.map */
