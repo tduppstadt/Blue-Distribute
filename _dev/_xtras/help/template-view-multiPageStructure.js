@@ -13,7 +13,7 @@ function (view)
 
     var constr = function ()
     {
-        this.eventStr = "EVENT_LOAD_INDEX"; // event string called to load page
+        this.eventString = "EVENT_LOAD_INDEX"; // event string called to load page
         this.hashString = "default"; // hash string to load page
         this.pageTemplate = window.oTemplates.p_index; // template used 
 
@@ -47,11 +47,11 @@ function (view)
         registerPage: function()
         {  
             this.oView.registerPage({
-                events: [this.eventStr],
+                events: [this.eventString],
                 routes: {
                     index: {
                         hashString : this.hashString,
-                        loadEvent  : this.eventStr
+                        loadEvent  : this.eventString
                     }
                 }
             });
@@ -68,13 +68,13 @@ function (view)
             var self = this;
             
             // listen for page event string
-            window.tEvent.addListener(this.eventStr, function(evt, data)
+            window.tEvent.addListener(this.eventString, function(evt, data)
             {
                 self.onPageLoad(data);   
             }); 
 
             // listen if a new page has been loaded
-            window.tEvent.addListener(window.tEvent.eventStr.EVENT_NEW_PAGE, function(evt, data)
+            window.tEvent.addListener(window.tEvent.eventString.EVENT_NEW_PAGE, function(evt, data)
             {
                 // clean up for new page
                 self.onCleanUp(data); 
