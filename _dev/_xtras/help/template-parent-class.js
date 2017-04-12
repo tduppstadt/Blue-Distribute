@@ -11,7 +11,7 @@ function (model)
     //
     // ---------------------------------------------------------------
    
-    var constructor = function()
+    var constructr = function()
     {
         console.log(" * <new Class>");
 
@@ -21,11 +21,11 @@ function (model)
         this.oModel    = model;   
     };
 
-    var methods =
+    var inheritMethods =
     {
 
         // --------------------------------------------------------------
-        // METHODS
+        // inheritMethods
         // --------------------------------------------------------------
 
         // ______________________________________________________________
@@ -56,8 +56,8 @@ function (model)
 
     };
 
-    var Class = constructor;
-    Class.prototype = methods;
+    var Class = constructr;
+    Class.prototype = inheritMethods;
 
     var instance = new Class();
     

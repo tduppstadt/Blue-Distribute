@@ -12,7 +12,7 @@ function (hash, view)
     //
     // ---------------------------------------------------------------
 
-    var constructor = function ()
+    var constructr = function ()
     {
         console.log(" * <globalNav>");
 
@@ -26,10 +26,10 @@ function (hash, view)
         this.init();
     };
 
-    var methods =
+    var inheritMethods =
     {    
         // --------------------------------------------------------------
-        // METHODS
+        // inheritMethods
         // --------------------------------------------------------------
         
         // ______________________________________________________________
@@ -141,8 +141,8 @@ function (hash, view)
 
     };
 
-    var Class = constructor;
-    Class.prototype = methods;
+    var Class = constructr;
+    Class.prototype = inheritMethods;
     
     var instance = new Class();
     

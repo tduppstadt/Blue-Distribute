@@ -11,7 +11,7 @@ function (helpers)
     //
     // ---------------------------------------------------------------
    
-    var constructor = function ()
+    var constructr = function ()
     {   
         console.log(" * <model>");
 
@@ -39,10 +39,10 @@ function (helpers)
         this.init();
     };
        
-    var methods =
+    var inheritMethods =
     {
         // --------------------------------------------------------------
-        // METHODS
+        // inheritMethods
         // --------------------------------------------------------------
 
         // ______________________________________________________________
@@ -159,8 +159,8 @@ function (helpers)
 
     };
 
-    var Class = constructor;
-    Class.prototype = methods;
+    var Class = constructr;
+    Class.prototype = inheritMethods;
 
     var instance = new Class();
     

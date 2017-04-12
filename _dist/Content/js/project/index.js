@@ -11,17 +11,20 @@ function (view)
     //
     // ---------------------------------------------------------------
 
-    var constructor = function ()
+    var constructr = function ()
     {
+        this.eventString = "EVENT_LOAD_INDEX";
+        this.hashString = "default";
+        this.pageTemplate = window.oTemplates.p_index;
         this.oView = view;
         
         this.init();
     };
 
-    var methods =
+    var inheritMethods =
     {    
         // --------------------------------------------------------------
-        // METHODS
+        // inheritMethods
         // --------------------------------------------------------------
         
         // ______________________________________________________________
@@ -38,13 +41,12 @@ function (view)
         //                                                   registerPage
         registerPage: function()
         {  
-            var evtStr = "EVENT_LOAD_INDEX";
             this.oView.registerPage({
-                events: [evtStr],
+                events: [this.eventString],
                 routes: {
                     index: {
-                        hashString : "default",
-                        loadEvent  : evtStr
+                        hashString : this.hashString,
+                        loadEvent  : this.eventString
                     }
                 }
             });
@@ -57,7 +59,7 @@ function (view)
         {          
             var self = this;
             
-            window.tEvent.addListener(window.tEvent.eventStr.EVENT_LOAD_INDEX, function(evt, data)
+            window.tEvent.addListener(this.eventString, function(evt, data)
             {
                 self.onPageLoad(data);   
             }); 
@@ -65,19 +67,9 @@ function (view)
             window.tEvent.addListener(window.tEvent.eventStr.EVENT_NEW_PAGE, function(evt, data)
             {
                 // clean up for new page
-                self.onCleanUp(); 
+                self.onCleanUp(data); 
             });                
-        },
-
-        // ______________________________________________________________
-        //                                         assignDynamicListeners
-        assignDynamicListeners: function()
-        {          
-            var self = this;
-        },
-
-        
-
+        },  
 
         // --------------------------------------------------------------
         // HELPERS
@@ -92,24 +84,23 @@ function (view)
         onPageLoad: function(data)
         {   
             console.log(" * <index.onPageLoad>");
-            this.oView.loadPageTemplate(window.oTemplates.p_index());
+            this.oView.loadPageTemplate(this.pageTemplate());
         },
 
         // ______________________________________________________________
         //                                                     onCleanUp
         // clean up when new page is loaded.
-        onCleanUp: function()
+        onCleanUp: function(data)
         {   
 
         }
 
     };
 
-    var Class = constructor;
-    Class.prototype = methods;
-    
+    var Class = constructr;
+    Class.prototype = inheritMethods;    
     var instance = new Class();
     
-    return (Class);     
+    return (instance);     
    
 });
