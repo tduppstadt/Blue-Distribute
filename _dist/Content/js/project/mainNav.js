@@ -12,9 +12,9 @@ function (hash, view)
     //
     // ---------------------------------------------------------------
 
-    var constructr = function ()
+    var MainNav = function ()
     {
-        console.log(" * <globalNav>");
+        console.log(" * <mainNav>");
 
         this.oView = view;
         this.oHash = hash;
@@ -26,7 +26,7 @@ function (hash, view)
         this.init();
     };
 
-    var inheritMethods =
+    MainNav.prototype =
     {    
         // --------------------------------------------------------------
         // inheritMethods
@@ -141,11 +141,8 @@ function (hash, view)
 
     };
 
-    var Class = constructr;
-    Class.prototype = inheritMethods;
-    
-    var instance = new Class();
-    
-    return (Class);        
+    var oMainNav = new MainNav();
+        
+    return (oMainNav);        
    
 });

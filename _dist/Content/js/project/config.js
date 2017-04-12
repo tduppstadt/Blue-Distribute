@@ -88,7 +88,7 @@ require.config(
 		//"bootstrap",
 		//"jHammer",
 		"index",	
-		"globalNav",
+		"mainNav",
 		"common/router"	// keep last to load after the pages
 	]
 
