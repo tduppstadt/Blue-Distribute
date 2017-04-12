@@ -11,9 +11,9 @@ function (view)
     //
     // ---------------------------------------------------------------
 
-    var constructr = function ()
+    var constr = function ()
     {
-        this.eventString = "EVENT_LOAD_INDEX"; // event string called to load page
+        this.eventStr = "EVENT_LOAD_INDEX"; // event string called to load page
         this.hashString = "default"; // hash string to load page
         this.pageTemplate = window.oTemplates.p_index; // template used 
 
@@ -22,10 +22,10 @@ function (view)
         this.init();
     };
 
-    var inheritMethods =
+    var inheritObj =
     {    
         // --------------------------------------------------------------
-        // inheritMethods
+        // inheritObj
         // --------------------------------------------------------------
         
         // ______________________________________________________________
@@ -47,11 +47,11 @@ function (view)
         registerPage: function()
         {  
             this.oView.registerPage({
-                events: [this.eventString],
+                events: [this.eventStr],
                 routes: {
                     index: {
                         hashString : this.hashString,
-                        loadEvent  : this.eventString
+                        loadEvent  : this.eventStr
                     }
                 }
             });
@@ -68,7 +68,7 @@ function (view)
             var self = this;
             
             // listen for page event string
-            window.tEvent.addListener(this.eventString, function(evt, data)
+            window.tEvent.addListener(this.eventStr, function(evt, data)
             {
                 self.onPageLoad(data);   
             }); 
@@ -114,8 +114,8 @@ function (view)
 
     };
 
-    var Class = constructr;
-    Class.prototype = inheritMethods;    
+    var Class = constr;
+    Class.prototype = inheritObj;    
     var instance = new Class();
     
     return (instance);     

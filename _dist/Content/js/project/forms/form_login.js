@@ -10,16 +10,16 @@ function (forms)
     //
     // ---------------------------------------------------------------
 
-    var constructr = function ()
+    var constr = function ()
     {
        
         this.oForms = forms;
     };
 
-    var inheritMethods =
+    var inheritObj =
     {    
         // --------------------------------------------------------------
-        // inheritMethods
+        // inheritObj
         // --------------------------------------------------------------
                 
         // ______________________________________________________________
@@ -89,8 +89,8 @@ function (forms)
     };
 
 
-    var Class = constructr;
-    Class.prototype = inheritMethods;
+    var Class = constr;
+    Class.prototype = inheritObj;
 
     var instance = new Class();
     

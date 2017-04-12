@@ -11,7 +11,7 @@ function (view)
     //
     // ---------------------------------------------------------------
 
-    var constructr = function ()
+    var constr = function ()
     {
         this.eventString = "EVENT_LOAD_INDEX";
         this.hashString = "default";
@@ -21,10 +21,10 @@ function (view)
         this.init();
     };
 
-    var inheritMethods =
+    var inheritObj =
     {    
         // --------------------------------------------------------------
-        // inheritMethods
+        // inheritObj
         // --------------------------------------------------------------
         
         // ______________________________________________________________
@@ -97,8 +97,8 @@ function (view)
 
     };
 
-    var Class = constructr;
-    Class.prototype = inheritMethods;    
+    var Class = constr;
+    Class.prototype = inheritObj;    
     var instance = new Class();
     
     return (instance);     
