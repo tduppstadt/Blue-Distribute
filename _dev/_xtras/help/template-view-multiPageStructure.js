@@ -11,7 +11,7 @@ function (view)
     //
     // ---------------------------------------------------------------
 
-    var constructr = function ()
+    var constr = function ()
     {
         this.eventString = "EVENT_LOAD_INDEX"; // event string called to load page
         this.hashString = "default"; // hash string to load page
@@ -22,10 +22,10 @@ function (view)
         this.init();
     };
 
-    var inheritMethods =
+    var inheritObj =
     {    
         // --------------------------------------------------------------
-        // inheritMethods
+        // inheritObj
         // --------------------------------------------------------------
         
         // ______________________________________________________________
@@ -74,7 +74,7 @@ function (view)
             }); 
 
             // listen if a new page has been loaded
-            window.tEvent.addListener(window.tEvent.eventStr.EVENT_NEW_PAGE, function(evt, data)
+            window.tEvent.addListener(window.tEvent.eventString.EVENT_NEW_PAGE, function(evt, data)
             {
                 // clean up for new page
                 self.onCleanUp(data); 
@@ -114,8 +114,8 @@ function (view)
 
     };
 
-    var Class = constructr;
-    Class.prototype = inheritMethods;    
+    var Class = constr;
+    Class.prototype = inheritObj;    
     var instance = new Class();
     
     return (instance);     
